@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_age = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_phone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rdo_male = new System.Windows.Forms.RadioButton();
+            this.rdo_femle = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_id = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_mail = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox_project_name = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -57,15 +57,15 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.rdo_new = new System.Windows.Forms.RadioButton();
+            this.rdo_add = new System.Windows.Forms.RadioButton();
+            this.textBox_appid = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox_company_name = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox_company_phone = new System.Windows.Forms.TextBox();
+            this.textBox_company_address = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -73,9 +73,9 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_valid_start = new System.Windows.Forms.DateTimePicker();
             this.label23 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_issue = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -83,24 +83,30 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_valid_end = new System.Windows.Forms.DateTimePicker();
+            this.textBox_appkey = new System.Windows.Forms.TextBox();
+            this.textBox_Remarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Verify = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBox_name
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(105, 21);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_name.Location = new System.Drawing.Point(109, 124);
+            this.textBox_name.Name = "textBox_name";
+            this.textBox_name.Size = new System.Drawing.Size(105, 21);
+            this.textBox_name.TabIndex = 0;
+            this.textBox_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -123,13 +129,13 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "必填";
             // 
-            // textBox2
+            // textBox_age
             // 
-            this.textBox2.Location = new System.Drawing.Point(109, 224);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(105, 21);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_age.Location = new System.Drawing.Point(109, 224);
+            this.textBox_age.Name = "textBox_age";
+            this.textBox_age.Size = new System.Drawing.Size(105, 21);
+            this.textBox_age.TabIndex = 0;
+            this.textBox_age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -152,13 +158,13 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "必填";
             // 
-            // textBox3
+            // textBox_phone
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 274);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(105, 21);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_phone.Location = new System.Drawing.Point(109, 274);
+            this.textBox_phone.Name = "textBox_phone";
+            this.textBox_phone.Size = new System.Drawing.Size(105, 21);
+            this.textBox_phone.TabIndex = 0;
+            this.textBox_phone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -191,25 +197,27 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "性别";
             // 
-            // radioButton1
+            // rdo_male
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(115, 179);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(35, 16);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.Text = "男";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdo_male.AutoSize = true;
+            this.rdo_male.Checked = true;
+            this.rdo_male.Location = new System.Drawing.Point(9, 13);
+            this.rdo_male.Name = "rdo_male";
+            this.rdo_male.Size = new System.Drawing.Size(35, 16);
+            this.rdo_male.TabIndex = 2;
+            this.rdo_male.TabStop = true;
+            this.rdo_male.Text = "男";
+            this.rdo_male.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdo_femle
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(174, 179);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(35, 16);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "女";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdo_femle.AutoSize = true;
+            this.rdo_femle.Location = new System.Drawing.Point(68, 13);
+            this.rdo_femle.Name = "rdo_femle";
+            this.rdo_femle.Size = new System.Drawing.Size(35, 16);
+            this.rdo_femle.TabIndex = 2;
+            this.rdo_femle.Text = "女";
+            this.rdo_femle.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -222,13 +230,13 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "必填";
             // 
-            // textBox4
+            // textBox_id
             // 
-            this.textBox4.Location = new System.Drawing.Point(109, 324);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(105, 21);
-            this.textBox4.TabIndex = 0;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_id.Location = new System.Drawing.Point(109, 324);
+            this.textBox_id.Name = "textBox_id";
+            this.textBox_id.Size = new System.Drawing.Size(105, 21);
+            this.textBox_id.TabIndex = 0;
+            this.textBox_id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -251,13 +259,13 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "必填";
             // 
-            // textBox5
+            // textBox_mail
             // 
-            this.textBox5.Location = new System.Drawing.Point(109, 374);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(105, 21);
-            this.textBox5.TabIndex = 0;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_mail.Location = new System.Drawing.Point(109, 374);
+            this.textBox_mail.Name = "textBox_mail";
+            this.textBox_mail.Size = new System.Drawing.Size(105, 21);
+            this.textBox_mail.TabIndex = 0;
+            this.textBox_mail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -300,13 +308,13 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "安装类型";
             // 
-            // textBox10
+            // textBox_project_name
             // 
-            this.textBox10.Location = new System.Drawing.Point(368, 374);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(205, 21);
-            this.textBox10.TabIndex = 0;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_project_name.Location = new System.Drawing.Point(368, 374);
+            this.textBox_project_name.Name = "textBox_project_name";
+            this.textBox_project_name.Size = new System.Drawing.Size(205, 21);
+            this.textBox_project_name.TabIndex = 0;
+            this.textBox_project_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
             // 
@@ -382,35 +390,35 @@
             this.label24.TabIndex = 1;
             this.label24.Text = "必填";
             // 
-            // radioButton3
+            // rdo_new
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(368, 129);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(47, 16);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "新领";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdo_new.AutoSize = true;
+            this.rdo_new.Checked = true;
+            this.rdo_new.Location = new System.Drawing.Point(9, 17);
+            this.rdo_new.Name = "rdo_new";
+            this.rdo_new.Size = new System.Drawing.Size(47, 16);
+            this.rdo_new.TabIndex = 2;
+            this.rdo_new.TabStop = true;
+            this.rdo_new.Text = "新领";
+            this.rdo_new.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rdo_add
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(441, 129);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(47, 16);
-            this.radioButton4.TabIndex = 2;
-            this.radioButton4.Text = "补证";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rdo_add.AutoSize = true;
+            this.rdo_add.Location = new System.Drawing.Point(82, 17);
+            this.rdo_add.Name = "rdo_add";
+            this.rdo_add.Size = new System.Drawing.Size(47, 16);
+            this.rdo_add.TabIndex = 2;
+            this.rdo_add.Text = "补证";
+            this.rdo_add.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // textBox_appid
             // 
-            this.textBox11.Location = new System.Drawing.Point(736, 124);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(173, 21);
-            this.textBox11.TabIndex = 0;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_appid.Location = new System.Drawing.Point(736, 124);
+            this.textBox_appid.Name = "textBox_appid";
+            this.textBox_appid.Size = new System.Drawing.Size(173, 21);
+            this.textBox_appid.TabIndex = 0;
+            this.textBox_appid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label25
             // 
@@ -432,13 +440,13 @@
             this.label26.TabIndex = 1;
             this.label26.Text = "APP密码";
             // 
-            // textBox12
+            // textBox_company_name
             // 
-            this.textBox12.Location = new System.Drawing.Point(736, 224);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(173, 21);
-            this.textBox12.TabIndex = 0;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_company_name.Location = new System.Drawing.Point(736, 224);
+            this.textBox_company_name.Name = "textBox_company_name";
+            this.textBox_company_name.Size = new System.Drawing.Size(173, 21);
+            this.textBox_company_name.TabIndex = 0;
+            this.textBox_company_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label27
             // 
@@ -450,21 +458,21 @@
             this.label27.TabIndex = 1;
             this.label27.Text = "所属单位名称";
             // 
-            // textBox13
+            // textBox_company_phone
             // 
-            this.textBox13.Location = new System.Drawing.Point(736, 274);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(173, 21);
-            this.textBox13.TabIndex = 0;
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_company_phone.Location = new System.Drawing.Point(736, 274);
+            this.textBox_company_phone.Name = "textBox_company_phone";
+            this.textBox_company_phone.Size = new System.Drawing.Size(173, 21);
+            this.textBox_company_phone.TabIndex = 0;
+            this.textBox_company_phone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox14
+            // textBox_company_address
             // 
-            this.textBox14.Location = new System.Drawing.Point(736, 324);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(173, 21);
-            this.textBox14.TabIndex = 0;
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_company_address.Location = new System.Drawing.Point(736, 324);
+            this.textBox_company_address.Name = "textBox_company_address";
+            this.textBox_company_address.Size = new System.Drawing.Size(173, 21);
+            this.textBox_company_address.TabIndex = 0;
+            this.textBox_company_address.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label28
             // 
@@ -541,16 +549,16 @@
             this.label35.TabIndex = 1;
             this.label35.Text = "必填";
             // 
-            // dateTimePicker1
+            // dateTimePicker_valid_start
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(368, 324);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 21);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker_valid_start.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker_valid_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_valid_start.Location = new System.Drawing.Point(368, 324);
+            this.dateTimePicker_valid_start.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker_valid_start.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_valid_start.Name = "dateTimePicker_valid_start";
+            this.dateTimePicker_valid_start.Size = new System.Drawing.Size(90, 21);
+            this.dateTimePicker_valid_start.TabIndex = 3;
             // 
             // label23
             // 
@@ -562,13 +570,13 @@
             this.label23.TabIndex = 1;
             this.label23.Text = "至";
             // 
-            // dateTimePicker3
+            // dateTimePicker_issue
             // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(368, 274);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(141, 21);
-            this.dateTimePicker3.TabIndex = 3;
+            this.dateTimePicker_issue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_issue.Location = new System.Drawing.Point(368, 274);
+            this.dateTimePicker_issue.Name = "dateTimePicker_issue";
+            this.dateTimePicker_issue.Size = new System.Drawing.Size(141, 21);
+            this.dateTimePicker_issue.TabIndex = 3;
             // 
             // label30
             // 
@@ -584,7 +592,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(368, 179);
+            this.checkBox1.Location = new System.Drawing.Point(10, 11);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(60, 16);
             this.checkBox1.TabIndex = 4;
@@ -594,7 +602,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(441, 179);
+            this.checkBox2.Location = new System.Drawing.Point(83, 11);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(72, 16);
             this.checkBox2.TabIndex = 4;
@@ -604,7 +612,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(368, 206);
+            this.checkBox3.Location = new System.Drawing.Point(10, 38);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(72, 16);
             this.checkBox3.TabIndex = 4;
@@ -614,7 +622,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(441, 206);
+            this.checkBox4.Location = new System.Drawing.Point(83, 38);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(72, 16);
             this.checkBox4.TabIndex = 4;
@@ -624,7 +632,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(368, 233);
+            this.checkBox5.Location = new System.Drawing.Point(10, 65);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(72, 16);
             this.checkBox5.TabIndex = 4;
@@ -634,40 +642,40 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(441, 233);
+            this.checkBox6.Location = new System.Drawing.Point(83, 65);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(72, 16);
             this.checkBox6.TabIndex = 4;
             this.checkBox6.Text = "交通卡口";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // dateTimePicker_valid_end
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(483, 324);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 21);
-            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker_valid_end.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker_valid_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_valid_end.Location = new System.Drawing.Point(483, 324);
+            this.dateTimePicker_valid_end.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker_valid_end.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_valid_end.Name = "dateTimePicker_valid_end";
+            this.dateTimePicker_valid_end.Size = new System.Drawing.Size(90, 21);
+            this.dateTimePicker_valid_end.TabIndex = 3;
             // 
-            // textBox6
+            // textBox_appkey
             // 
-            this.textBox6.Location = new System.Drawing.Point(736, 174);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(173, 21);
-            this.textBox6.TabIndex = 0;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_appkey.Location = new System.Drawing.Point(736, 174);
+            this.textBox_appkey.Name = "textBox_appkey";
+            this.textBox_appkey.Size = new System.Drawing.Size(173, 21);
+            this.textBox_appkey.TabIndex = 0;
+            this.textBox_appkey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox7
+            // textBox_Remarks
             // 
-            this.textBox7.Location = new System.Drawing.Point(109, 423);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(667, 67);
-            this.textBox7.TabIndex = 0;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_Remarks.Location = new System.Drawing.Point(109, 423);
+            this.textBox_Remarks.Multiline = true;
+            this.textBox_Remarks.Name = "textBox_Remarks";
+            this.textBox_Remarks.Size = new System.Drawing.Size(667, 67);
+            this.textBox_Remarks.TabIndex = 0;
+            this.textBox_Remarks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
@@ -679,17 +687,18 @@
             this.label13.TabIndex = 1;
             this.label13.Text = "备注";
             // 
-            // button1
+            // btn_Verify
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(340, 531);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 45);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "验证信息";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_Verify.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_Verify.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Verify.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Verify.Location = new System.Drawing.Point(340, 531);
+            this.btn_Verify.Name = "btn_Verify";
+            this.btn_Verify.Size = new System.Drawing.Size(195, 45);
+            this.btn_Verify.TabIndex = 5;
+            this.btn_Verify.Text = "验证信息";
+            this.btn_Verify.UseVisualStyleBackColor = false;
+            this.btn_Verify.Click += new System.EventHandler(this.btn_Verify_Click);
             // 
             // label19
             // 
@@ -737,25 +746,46 @@
             this.label38.TabIndex = 1;
             this.label38.Text = "数字身份证书制证系统";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdo_male);
+            this.panel1.Controls.Add(this.rdo_femle);
+            this.panel1.Location = new System.Drawing.Point(105, 166);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(109, 47);
+            this.panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rdo_new);
+            this.panel2.Controls.Add(this.rdo_add);
+            this.panel2.Location = new System.Drawing.Point(359, 112);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(141, 47);
+            this.panel2.TabIndex = 7;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Controls.Add(this.checkBox6);
+            this.panel3.Controls.Add(this.checkBox3);
+            this.panel3.Controls.Add(this.checkBox4);
+            this.panel3.Controls.Add(this.checkBox5);
+            this.panel3.Controls.Add(this.checkBox2);
+            this.panel3.Location = new System.Drawing.Point(358, 168);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(163, 100);
+            this.panel3.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 594);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.btn_Verify);
+            this.Controls.Add(this.dateTimePicker_issue);
+            this.Controls.Add(this.dateTimePicker_valid_end);
+            this.Controls.Add(this.dateTimePicker_valid_start);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label35);
@@ -783,19 +813,19 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_project_name);
+            this.Controls.Add(this.textBox_Remarks);
+            this.Controls.Add(this.textBox_mail);
+            this.Controls.Add(this.textBox_company_address);
+            this.Controls.Add(this.textBox_id);
+            this.Controls.Add(this.textBox_company_phone);
+            this.Controls.Add(this.textBox_phone);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_company_name);
+            this.Controls.Add(this.textBox_age);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label7);
@@ -803,12 +833,22 @@
             this.Controls.Add(this.label38);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_appkey);
+            this.Controls.Add(this.textBox_appid);
+            this.Controls.Add(this.textBox_name);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -816,28 +856,28 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_age;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_phone;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rdo_male;
+        private System.Windows.Forms.RadioButton rdo_femle;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_id;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_mail;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox_project_name;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -845,15 +885,15 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.RadioButton rdo_new;
+        private System.Windows.Forms.RadioButton rdo_add;
+        private System.Windows.Forms.TextBox textBox_appid;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox_company_name;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox_company_phone;
+        private System.Windows.Forms.TextBox textBox_company_address;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label31;
@@ -861,9 +901,9 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_valid_start;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_issue;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -871,15 +911,18 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_valid_end;
+        private System.Windows.Forms.TextBox textBox_appkey;
+        private System.Windows.Forms.TextBox textBox_Remarks;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Verify;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
