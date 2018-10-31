@@ -8,12 +8,17 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Runtime.InteropServices;
 
 namespace KeySign
 {
     
     public partial class MainForm : Form
     {
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "test",CallingConvention = CallingConvention.Cdecl)]
+        static extern int test(int a,int b);
+
         Form_AckMake myAckMakeForm = new Form_AckMake();
         SQLTestUnit mySQLTestUnit = new SQLTestUnit();
 
@@ -26,6 +31,8 @@ namespace KeySign
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+            int t = test(3,4);
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
             dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
 
