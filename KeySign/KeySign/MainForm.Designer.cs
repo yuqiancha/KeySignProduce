@@ -95,6 +95,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button_sqlform = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -592,6 +594,8 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(10, 11);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(60, 16);
@@ -675,6 +679,7 @@
             this.textBox_Remarks.Name = "textBox_Remarks";
             this.textBox_Remarks.Size = new System.Drawing.Size(667, 67);
             this.textBox_Remarks.TabIndex = 0;
+            this.textBox_Remarks.Text = "无";
             this.textBox_Remarks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
@@ -777,11 +782,33 @@
             this.panel3.Size = new System.Drawing.Size(163, 100);
             this.panel3.TabIndex = 8;
             // 
+            // button_sqlform
+            // 
+            this.button_sqlform.Location = new System.Drawing.Point(875, 547);
+            this.button_sqlform.Name = "button_sqlform";
+            this.button_sqlform.Size = new System.Drawing.Size(118, 45);
+            this.button_sqlform.TabIndex = 9;
+            this.button_sqlform.Text = "打开数据库界面";
+            this.button_sqlform.UseVisualStyleBackColor = true;
+            this.button_sqlform.Click += new System.EventHandler(this.button_sqlform_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(875, 478);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 45);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "载入默认";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button_sqlform_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 594);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_sqlform);
             this.Controls.Add(this.btn_Verify);
             this.Controls.Add(this.dateTimePicker_issue);
             this.Controls.Add(this.dateTimePicker_valid_end);
@@ -923,6 +950,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button_sqlform;
+        private System.Windows.Forms.Button button1;
     }
 }
 

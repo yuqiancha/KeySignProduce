@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-
+using System.Configuration;
 
 namespace KeySign
 {
@@ -15,6 +15,9 @@ namespace KeySign
     public partial class MainForm : Form
     {
         Form_AckMake myAckMakeForm = new Form_AckMake();
+        SQLTestUnit mySQLTestUnit = new SQLTestUnit();
+
+
 
         public MainForm()
         {
@@ -25,6 +28,20 @@ namespace KeySign
         {
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
             dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
+
+
+            textBox_name.Text = ConfigurationManager.AppSettings["name"];
+            textBox_age.Text = ConfigurationManager.AppSettings["age"];
+            textBox_phone.Text = ConfigurationManager.AppSettings["phone"];
+            textBox_id.Text = ConfigurationManager.AppSettings["id"];
+            textBox_mail.Text = ConfigurationManager.AppSettings["mail"];
+            textBox_project_name.Text = ConfigurationManager.AppSettings["project_name"];
+            textBox_appid.Text = ConfigurationManager.AppSettings["appid"];
+            textBox_appkey.Text = ConfigurationManager.AppSettings["appkey"];
+
+            textBox_company_name.Text = ConfigurationManager.AppSettings["company_name"];
+            textBox_company_phone.Text = ConfigurationManager.AppSettings["company_phone"];
+            textBox_company_address.Text = ConfigurationManager.AppSettings["company_address"];
         }
 
 
@@ -32,7 +49,6 @@ namespace KeySign
         {
             
             CertInfo.name = textBox_name.Text;
-
 
 
             if (rdo_male.Checked)
@@ -60,7 +76,13 @@ namespace KeySign
                     CertInfo.install_type += item.Text + ",";
                 }
             }
-            CertInfo.install_type = CertInfo.install_type.Substring(0, CertInfo.install_type.Length - 1);
+            if (CertInfo.install_type!=null)
+                CertInfo.install_type = CertInfo.install_type.Substring(0, CertInfo.install_type.Length - 1);
+            else
+            {
+                MessageBox.Show("至少选择一种安装类型");
+                return -1;
+            }
 
             CertInfo.issue_day = dateTimePicker_issue.Text;//发证日期
 
@@ -73,7 +95,6 @@ namespace KeySign
             CertInfo.company_name = textBox_company_name.Text;
             CertInfo.company_phone = textBox_company_phone.Text;
             CertInfo.company_address = textBox_company_address.Text;
-
             CertInfo.remarks = textBox_Remarks.Text;//备注
 
 
@@ -106,6 +127,19 @@ namespace KeySign
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void button_sqlform_Click(object sender, EventArgs e)
+        {
+            if(mySQLTestUnit!=null)
+            {
+                mySQLTestUnit.Activate();
+            }
+            else
+            {
+                mySQLTestUnit = new SQLTestUnit();
+            }
+            mySQLTestUnit.ShowDialog();
         }
     }
 }

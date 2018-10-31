@@ -19,6 +19,7 @@ namespace KeySign
 
         public static string cert_validity_period_start;//证书有效期开始
         public static string cert_validity_period_end;//证书有效期结束
+        public static string cert_validity_period;
 
         public static string project_name;
         public static string appid;
