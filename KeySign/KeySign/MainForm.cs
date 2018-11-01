@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace KeySign
 {
@@ -19,10 +20,21 @@ namespace KeySign
         [DllImport("MFCLibrary1.dll", EntryPoint = "test",CallingConvention = CallingConvention.Cdecl)]
         static extern int test(int a,int b);
 
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootkey", CallingConvention = CallingConvention.Cdecl)]
+        static extern int Genrootkey(ref byte str);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootp10", CallingConvention = CallingConvention.Cdecl)]
+        static extern int Genrootp10(ref byte str,string sub_name);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootcer", CallingConvention = CallingConvention.Cdecl)]
+        static extern int Genrootcer(ref byte str,string serial,string not_befor,string not_after, string sub_name,int usep10);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genuserkey", CallingConvention = CallingConvention.Cdecl)]
+        static extern int Genuserkey(int usegen);
+
+
         Form_AckMake myAckMakeForm = new Form_AckMake();
         SQLTestUnit mySQLTestUnit = new SQLTestUnit();
-
-
 
         public MainForm()
         {
@@ -31,8 +43,27 @@ namespace KeySign
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+         //   int t = test(3,4);
+            try
+            {
+                byte[] s = new byte[1024];
+                int ret = Genrootkey(ref s[0]);
+                string strGet = System.Text.Encoding.Default.GetString(s, 0, s.Length);
 
-            int t = test(3,4);
+                ret = Genrootp10(ref s[0], "CN=USER,O=TEST,C=CN");
+                strGet = System.Text.Encoding.Default.GetString(s, 0, s.Length);
+
+                ret = Genrootcer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN",1);
+                strGet = System.Text.Encoding.Default.GetString(s, 0, s.Length);
+
+                ret = Genuserkey(1);
+                strGet = System.Text.Encoding.Default.GetString(s, 0, s.Length);
+
+            }
+            catch(Exception ex)
+            {
+                Trace.WriteLine(ex.ToString());
+            }
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
             dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
 
