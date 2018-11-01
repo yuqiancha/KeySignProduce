@@ -20,8 +20,8 @@ namespace KeySign
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注) " +
-              "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks)";
+            string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,OnlyID) " +
+              "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks,@OnlyID)";
 
 
             using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
@@ -47,6 +47,7 @@ namespace KeySign
                     cmd.Parameters.AddWithValue("@company_phone", CertInfo.company_phone);
                     cmd.Parameters.AddWithValue("@company_address", CertInfo.company_address);
                     cmd.Parameters.AddWithValue("@remarks", CertInfo.remarks);
+                    cmd.Parameters.AddWithValue("@OnlyID", CertInfo.OnlyID);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -55,20 +56,20 @@ namespace KeySign
                     timer1.Enabled = true;
 
                 }
-                catch(MySqlException ex)
+                catch (MySqlException ex)
                 {
-                    MessageBox.Show("数据库中已存在此身份证号，请核查！"+ex.Message);
+                    MessageBox.Show("数据库中已存在此身份证号，请核查！" + ex.Message);
                 }
             }
         }
 
         private void Form_AckMake_Load(object sender, EventArgs e)
         {
-            label_name.Text = "姓名:"+CertInfo.name;
+            label_name.Text = "姓名:" + CertInfo.name;
             label_gender.Text = "性别:" + CertInfo.gender;
             label_age.Text = "年龄:" + CertInfo.age;
 
-            label_phone.Text = "手机号:"+CertInfo.phone;
+            label_phone.Text = "手机号:" + CertInfo.phone;
 
             label_id.Text = "身份证号:" + CertInfo.id;
             label_mail.Text = "邮箱号:" + CertInfo.age;
@@ -94,9 +95,27 @@ namespace KeySign
         private void timer1_Tick(object sender, EventArgs e)
         {
             progressBar1.Value += 5;
-            if (progressBar1.Value>=100)
+            if (progressBar1.Value >= 100)
             {
                 timer1.Enabled = false;
+                int ret = 0;
+
+                //        ret = TSCLIB_DLL.about();                                                                 //Show the DLL version
+
+                ret = Program.openport("Gprinter GP-3120TU");                                           //Open specified printer driver
+
+
+                ret = Program.setup("30", "17", "6", "10", "0", "1", "0");                           //Setup the media size and sensor type info
+                ret = Program.clearbuffer();                                                           //Clear image buffer
+                                                                                                       //    ret = TSCLIB_DLL.barcode("0", "0", "128", "10", "1", "0", "2", "2", "Barcode Test"); //Drawing barcode
+                ret = Program.printerfont("0", "24", "TSS24.BF2", "0", "1", "1", CertInfo.name);        //Drawing printer font
+                ret = Program.printerfont("0", "56", "TSS24.BF2", "0", "1", "1", CertInfo.issue_day);        //Drawing printer font
+                ret = Program.printerfont("0", "88", "TSS24.BF2", "0", "1", "1", CertInfo.OnlyID);        //Drawing printer font
+
+
+                ret = Program.printlabel("1", "1");                                                    //Print labels
+                ret = Program.closeport();
+
                 this.Close();
             }
 

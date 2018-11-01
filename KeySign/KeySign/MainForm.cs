@@ -136,6 +136,19 @@ namespace KeySign
             CertInfo.remarks = textBox_Remarks.Text;//备注
 
 
+   
+
+            string OnlyIDwithoutCRC = CertInfo.id.Substring(CertInfo.id.Length - 6, 6) + CertInfo.issue_day.Replace("/","");
+
+            byte[] temp = Function.StrToHexByte(OnlyIDwithoutCRC + "C0DEC0DEC0DEC0DEC0DEC0DEC0DEC0DE");
+
+            ushort CRC = 0xffff;
+            ushort genpoly = 0x1021;
+            for (int i = 0; i < temp.Length; i = i + 1)
+            {
+                CRC = Function.CRChware(temp[i], genpoly, CRC);
+            }
+            CertInfo.OnlyID = OnlyIDwithoutCRC +CRC.ToString("x4");
 
             //全部通过进入下一个页面，否则提示出错需要重新设置
             if (myAckMakeForm != null)
@@ -156,8 +169,7 @@ namespace KeySign
 
             try
             {
-                VerifyInfo();
-               
+                VerifyInfo();               
 
             }
             catch(Exception ex)

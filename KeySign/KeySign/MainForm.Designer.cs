@@ -553,8 +553,8 @@
             // 
             // dateTimePicker_valid_start
             // 
-            this.dateTimePicker_valid_start.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker_valid_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_valid_start.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker_valid_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_valid_start.Location = new System.Drawing.Point(368, 324);
             this.dateTimePicker_valid_start.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_valid_start.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
@@ -574,7 +574,8 @@
             // 
             // dateTimePicker_issue
             // 
-            this.dateTimePicker_issue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_issue.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker_issue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_issue.Location = new System.Drawing.Point(368, 274);
             this.dateTimePicker_issue.Name = "dateTimePicker_issue";
             this.dateTimePicker_issue.Size = new System.Drawing.Size(141, 21);
@@ -655,8 +656,8 @@
             // 
             // dateTimePicker_valid_end
             // 
-            this.dateTimePicker_valid_end.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker_valid_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_valid_end.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker_valid_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_valid_end.Location = new System.Drawing.Point(483, 324);
             this.dateTimePicker_valid_end.MaxDate = new System.DateTime(2098, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_valid_end.MinDate = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);

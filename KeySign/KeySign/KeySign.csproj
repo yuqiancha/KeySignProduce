@@ -77,6 +77,7 @@
     <Compile Include="Form_AckMake.Designer.cs">
       <DependentUpon>Form_AckMake.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

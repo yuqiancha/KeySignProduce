@@ -30,6 +30,7 @@ namespace KeySign
 
         public static string remarks;//备注
 
+        public static string OnlyID;//证书编号
 
     }
 }
