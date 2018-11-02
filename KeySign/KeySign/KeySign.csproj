@@ -7,7 +7,7 @@
     <ProjectGuid>{D0A8E9D5-6074-45F3-BB08-1BB91D93DA00}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KeySign</RootNamespace>
-    <AssemblyName>KeySign</AssemblyName>
+    <AssemblyName>数字身份证制证软件</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8_Autopilot.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,6 +81,12 @@
       <DependentUpon>Form_AckMake.cs</DependentUpon>
     </Compile>
     <Compile Include="Function.cs" />
+    <Compile Include="KeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyForm.Designer.cs">
+      <DependentUpon>KeyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +104,9 @@
     </Compile>
     <EmbeddedResource Include="Form_AckMake.resx">
       <DependentUpon>Form_AckMake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyForm.resx">
+      <DependentUpon>KeyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -123,6 +135,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8_Autopilot.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

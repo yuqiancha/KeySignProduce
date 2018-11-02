@@ -112,6 +112,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SQLTestUnit";
             this.Text = "SQLTestUnit";
+            this.Load += new System.EventHandler(this.SQLTestUnit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

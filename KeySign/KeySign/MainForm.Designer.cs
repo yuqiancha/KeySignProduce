@@ -791,23 +791,25 @@
             this.button_sqlform.TabIndex = 9;
             this.button_sqlform.Text = "打开数据库界面";
             this.button_sqlform.UseVisualStyleBackColor = true;
+            this.button_sqlform.Visible = false;
             this.button_sqlform.Click += new System.EventHandler(this.button_sqlform_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(875, 478);
+            this.button1.Location = new System.Drawing.Point(875, 477);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 45);
             this.button1.TabIndex = 9;
             this.button1.Text = "载入默认";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button_sqlform_Click);
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 594);
+            this.ClientSize = new System.Drawing.Size(993, 661);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_sqlform);
             this.Controls.Add(this.btn_Verify);

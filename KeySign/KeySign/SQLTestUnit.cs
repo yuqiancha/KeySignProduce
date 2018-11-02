@@ -44,11 +44,16 @@ namespace KeySign
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String CmdStr = "delete from Table_ZK where IP = '192.168.1.1'";
+            String CmdStr = "delete * from tableAll";
             SQLClass.SqlExcuteCMD(CmdStr);
 
-            string myQuery = "select * from Table_ZK";
+            string myQuery = "select * from tableAll";
             dataGridView1.DataSource = SQLClass.ExcuteQueryUsingDataAdapter(myQuery);
+        }
+
+        private void SQLTestUnit_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

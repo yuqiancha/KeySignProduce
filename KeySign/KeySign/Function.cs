@@ -3,11 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace KeySign
 {
     class Function
     {
+        public static int UseDataBase = 1;
+
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "test", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int test(int a, int b);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootkey", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genrootkey(ref byte str);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootp10", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genrootp10(ref byte str, string sub_name);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genrootcer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genrootcer(ref byte str, string serial, string not_befor, string not_after, string sub_name, int usep10);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genuserkey", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genuserkey(int usegen);
+
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genuserp10", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genuserp10(ref byte str, string sub_name);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Genusercer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Genusercer(ref byte str, string serial, string not_befor, string not_after, string sub_name, int usep10);
+
+        [DllImport("MFCLibrary1.dll", EntryPoint = "Importcert", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Importcert(string ibuf);
 
         public static ushort CRChware(ushort data, ushort genpoly, ushort crc)
         {
