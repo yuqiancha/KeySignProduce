@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
+using log4net;
+using log4net.Config;
 
 namespace KeySign
 {
@@ -27,6 +29,8 @@ namespace KeySign
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            MajorLog.Debug("这是一个Debug日志");
+
             Function.UseDataBase = int.Parse(ConfigurationManager.AppSettings["UseDataBase"]);
 
 
@@ -121,7 +125,6 @@ namespace KeySign
             }
 
             CertInfo.email = textBox_mail.Text;
-
 
             CertInfo.install_type = null;//安装类型
             if (checkBox1.Checked)

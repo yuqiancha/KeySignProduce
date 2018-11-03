@@ -21,6 +21,7 @@ namespace KeySign
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MajorLog.Debug("点击确认并制证");
 
             if (button1.Text == "确认并制证")
             {
@@ -70,25 +71,42 @@ namespace KeySign
                         }
                     }
                 }
+                else
+                {
+                    MajorLog.Debug("未使用数据库");
+                }
 
                 #region 制证
 
-
                 try
                 {
+                    MajorLog.Debug("开始制证");
+
                     string startday = CertInfo.cert_validity_period_start.Replace("/", "") + "000000";
                     string endday = CertInfo.cert_validity_period_end.Replace("/", "") + "000000";
                     string downCmd = "CN=USER,O="+CertInfo.OnlyID+",C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
 
+                    string downCmdRoot = "CN=ROOT,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
+               //     downCmd = "CN=USER,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
+
                     byte[] s = new byte[1024];
                     int ret = 0;
                     ret = Function.Genrootkey(ref s[0]);//产生根证书密钥对
-                    ret = Function.Genrootp10(ref s[0], downCmd);//产生根证书P10                                                                               
+                    if(ret>0) MajorLog.Debug("产生根证书密钥对--成功");
+                    else MajorLog.Debug("产生根证书密钥对--失败");
+
+                    ret = Function.Genrootp10(ref s[0], downCmdRoot);//产生根证书P10   
+                    if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
+                    else MajorLog.Debug("产生根证书P10--失败");
+
                     //     ret = Function.Genrootcer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN", 1);
-                    ret = Function.Genrootcer(ref s[0], CertInfo.OnlyID, startday, endday, downCmd, 1);//产生根证书
+                    ret = Function.Genrootcer(ref s[0], CertInfo.OnlyID, startday, endday, downCmdRoot, 1);//产生根证书
+                    if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
+                    else MajorLog.Debug("产生根证书--失败");
 
-
-                    ret = Function.Genuserkey(1);//产生用户密钥对
+                    ret = Function.Genuserkey();//产生用户密钥对
+                    if (ret > 0) MajorLog.Debug("产生用户密钥对--成功");
+                    else MajorLog.Debug("产生用户密钥对--失败");
 
                     ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
 
@@ -101,10 +119,13 @@ namespace KeySign
                     string downStr = strGet2.Substring(0, len);
 
                     ret = Function.Importcert(strGet2);
+                    if (ret > 0) MajorLog.Debug("写入用户证书--成功");
+                    else MajorLog.Debug("写入用户证书--失败");
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.Message);
+                    MajorLog.Debug(ex.ToString());
                 }
 
 

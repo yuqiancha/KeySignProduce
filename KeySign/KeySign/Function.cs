@@ -25,7 +25,7 @@ namespace KeySign
         public static extern int Genrootcer(ref byte str, string serial, string not_befor, string not_after, string sub_name, int usep10);
 
         [DllImport("MFCLibrary1.dll", EntryPoint = "Genuserkey", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int Genuserkey(int usegen);
+        public static extern int Genuserkey();
 
 
         [DllImport("MFCLibrary1.dll", EntryPoint = "Genuserp10", CallingConvention = CallingConvention.Cdecl)]
