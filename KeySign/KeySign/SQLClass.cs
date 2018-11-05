@@ -10,7 +10,7 @@ namespace KeySign
 {
     class SQLClass
     {
-        public static string connsql = @"server=127.0.0.1;Database=dmkeybase;uid=root;pwd=Shanghai804";
+        public static string connsql = @"server=127.0.0.1;Database=dmkeybase;uid=root;pwd=Shanghai804;SslMode = none";
         public static void SqlExcuteCMD(String CmdStr)
         {
             using (MySqlConnection con = new MySqlConnection(connsql))

@@ -30,13 +30,14 @@ namespace KeySign
         private void MainForm_Load(object sender, EventArgs e)
         {
             MajorLog.Debug("这是一个Debug日志");
-
+            label_age.Visible = false;
             Function.UseDataBase = int.Parse(ConfigurationManager.AppSettings["UseDataBase"]);
 
 
-            SQLClass.connsql = @"server="+ConfigurationManager.AppSettings["SQLIP"] +
-                ";Database=dmkeybase;uid="+ ConfigurationManager.AppSettings["SQLNAME"] + 
-                ";pwd="+ConfigurationManager.AppSettings["SQLPSWD"];
+            SQLClass.connsql = @"server=" + ConfigurationManager.AppSettings["SQLIP"] +
+                ";Database=dmkeybase;uid=" + ConfigurationManager.AppSettings["SQLNAME"] +
+                ";pwd=" + ConfigurationManager.AppSettings["SQLPSWD"] + 
+                ";SslMode="+ ConfigurationManager.AppSettings["SSLMODE"];
 
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
             dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
@@ -66,12 +67,45 @@ namespace KeySign
             if (rdo_male.Checked)
                 CertInfo.gender = "男";
             else
-                CertInfo.gender = "女";
+                CertInfo.gender = "女";           
 
             CertInfo.age = textBox_age.Text;
+            int Fage = 0;
+            int.TryParse(textBox_age.Text, out Fage);
+            if (Fage < 1 || Fage > 80)
+            {
+                label_age.Visible = true;
+                return -1;
+            }
+            else
+            {
+                label_age.Visible = false;
+            }
 
+            Regex regex = new Regex(@"1[3456789]\d{9}$");
+            if (regex.IsMatch(textBox_phone.Text))
+            {
+                label_phone.Visible = false;
+            }
+            else
+            {
+                label_phone.Visible = true;
+                return -1;
+            }
 
             CertInfo.phone = textBox_phone.Text; ;
+
+
+            if ((!Regex.IsMatch(textBox_id.Text, @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$", RegexOptions.IgnoreCase)))
+            {
+                label_id.Visible = true;
+                return -1;
+            }
+            else
+            {
+                label_id.Visible = false;
+
+            }
 
 
             CertInfo.id = textBox_id.Text;
@@ -118,7 +152,7 @@ namespace KeySign
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show("数据库中已存在此身份证号，请核查！" + ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
 
                 }
@@ -220,6 +254,46 @@ namespace KeySign
             textBox_company_name.Text = ConfigurationManager.AppSettings["company_name"];
             textBox_company_phone.Text = ConfigurationManager.AppSettings["company_phone"];
             textBox_company_address.Text = ConfigurationManager.AppSettings["company_address"];
+        }
+
+        private void textBox_age_TextChanged(object sender, EventArgs e)
+        {
+            int Fage = 0;
+            int.TryParse(textBox_age.Text, out Fage);
+            if (Fage < 1 || Fage > 80)
+            {
+                label_age.Visible = true;                
+            }
+            else
+            {
+                label_age.Visible = false;
+            }
+        }
+
+        private void textBox_phone_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"1[3456789]\d{9}$");
+            if(regex.IsMatch(textBox_phone.Text))
+            {
+                label_phone.Visible = false;
+            }
+            else
+            {
+                label_phone.Visible = true;
+            }
+        }
+
+        private void textBox_id_TextChanged(object sender, EventArgs e)
+        {
+
+            if ((!Regex.IsMatch(textBox_id.Text, @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$", RegexOptions.IgnoreCase)))
+            {
+                label_id.Visible = true;
+            }
+            else
+            {
+                label_id.Visible = false;
+            }
         }
     }
 }

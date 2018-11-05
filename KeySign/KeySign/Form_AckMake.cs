@@ -84,8 +84,8 @@ namespace KeySign
 
                     string startday = CertInfo.cert_validity_period_start.Replace("/", "") + "000000";
                     string endday = CertInfo.cert_validity_period_end.Replace("/", "") + "000000";
-                    string downCmd = "CN=USER,O="+CertInfo.OnlyID+",C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
-
+                    //      string downCmd = "CN=USER,O="+CertInfo.OnlyID+",C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
+                    string downCmd = "CN=USER,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
                     string downCmdRoot = "CN=ROOT,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
                //     downCmd = "CN=USER,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
 

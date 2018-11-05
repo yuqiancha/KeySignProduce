@@ -11,6 +11,9 @@ namespace KeySign
     {
         public static int UseDataBase = 1;
 
+        public static bool Checked_Age = false;
+        public static bool Checked_Phone = false;
+        public static bool Checked_Id = false;
 
         [DllImport("MFCLibrary1.dll", EntryPoint = "test", CallingConvention = CallingConvention.Cdecl)]
         public static extern int test(int a, int b);
