@@ -28,7 +28,7 @@ namespace KeySign
                 string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,OnlyID) " +
                   "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks,@OnlyID)";
 
-                if (Function.UseDataBase!=0)
+                if (Function.UseDataBase != 0)
                 {
                     using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
                     using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
@@ -67,7 +67,7 @@ namespace KeySign
                         }
                         catch (MySqlException ex)
                         {
-                            MessageBox.Show("数据库中已存在此身份证号，请核查！" + ex.Message);
+                            MessageBox.Show(ex.Message);
                         }
                     }
                 }
@@ -82,45 +82,48 @@ namespace KeySign
                 {
                     MajorLog.Debug("开始制证");
 
-                    string startday = CertInfo.cert_validity_period_start.Replace("/", "") + "000000";
-                    string endday = CertInfo.cert_validity_period_end.Replace("/", "") + "000000";
-                    //      string downCmd = "CN=USER,O="+CertInfo.OnlyID+",C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
-                    string downCmd = "CN=USER,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
-                    string downCmdRoot = "CN=ROOT,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
-               //     downCmd = "CN=USER,O=TEST,C=CN";//替换原来的"CN=USER,O=TEST,C=CN"
+                    ////string startday = CertInfo.cert_validity_period_start.Replace("/", "") + "000000";
+                    ////string endday = CertInfo.cert_validity_period_end.Replace("/", "") + "000000";
+                    string downCmd = "CN=USER,O=" + CertInfo.OnlyID + ",C=CN";
+                    string downCmdRoot = "CN=ROOT,O=TEST,C=CN";
 
                     byte[] s = new byte[1024];
                     int ret = 0;
-                    ret = Function.Genrootkey(ref s[0]);//产生根证书密钥对
-                    if(ret>0) MajorLog.Debug("产生根证书密钥对--成功");
-                    else MajorLog.Debug("产生根证书密钥对--失败");
+                    ////ret = Function.Genrootkey(ref s[0]);//产生根证书密钥对
+                    ////if (ret > 0) MajorLog.Debug("产生根证书密钥对--成功");
+                    ////else MajorLog.Debug("产生根证书密钥对--失败");
 
-                    ret = Function.Genrootp10(ref s[0], downCmdRoot);//产生根证书P10   
-                    if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
-                    else MajorLog.Debug("产生根证书P10--失败");
+                    ////ret = Function.Genrootp10(ref s[0], downCmdRoot);//产生根证书P10   
+                    ////if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
+                    ////else MajorLog.Debug("产生根证书P10--失败");
 
-                    //     ret = Function.Genrootcer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN", 1);
-                    ret = Function.Genrootcer(ref s[0], CertInfo.OnlyID, startday, endday, downCmdRoot, 1);//产生根证书
-                    if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
-                    else MajorLog.Debug("产生根证书--失败");
+                    ////ret = Function.Genrootcer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN", 1);
+                    ////if (ret > 0) MajorLog.Debug("产生根证书--成功");
+                    ////else MajorLog.Debug("产生根证书--失败");
 
-                    ret = Function.Genuserkey();//产生用户密钥对
-                    if (ret > 0) MajorLog.Debug("产生用户密钥对--成功");
-                    else MajorLog.Debug("产生用户密钥对--失败");
+                    ////ret = Function.Genuserkey();//产生用户密钥对
+                    ////if (ret > 0) MajorLog.Debug("产生用户密钥对--成功");
+                    ////else MajorLog.Debug("产生用户密钥对--失败");
 
-                    ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
+                    ////ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
 
-                    ret = Function.Genusercer(ref s[0], CertInfo.OnlyID, startday, endday, downCmd, 1);//产生用户证书
-                    //     ret = Function.Genusercer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN", 1);
 
-         
+                    ret = Function.Genusercer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", downCmd, 1);//产生用户证书
+
+
                     string strGet2 = System.Text.Encoding.Default.GetString(s, 0, s.Length);
-                    int len = strGet2.Length;
-                    string downStr = strGet2.Substring(0, len);
+                    //    int len = strGet2.Length;
+                    //    string downStr = strGet2.Substring(0, len);
 
                     ret = Function.Importcert(strGet2);
-                    if (ret > 0) MajorLog.Debug("写入用户证书--成功");
-                    else MajorLog.Debug("写入用户证书--失败");
+                    if (ret > 0)
+                    {
+                        MajorLog.Debug("写入证书--成功");
+                    }
+                    else
+                    {
+                        MajorLog.Debug("写入证书--失败");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -199,7 +202,7 @@ namespace KeySign
                 button1.Text = "制证完成";
                 button1.BackColor = Color.Green;
 
-                label_onlyid.Text = "您的数字身份证已制作完成，编号为:"+CertInfo.OnlyID+ "(身份证后六位+制证日期八位+随机验证码四位";
+                label_onlyid.Text = "您的数字身份证已制作完成，编号为:" + CertInfo.OnlyID + "(身份证后六位+制证日期八位+随机验证码四位";
             }
         }
     }

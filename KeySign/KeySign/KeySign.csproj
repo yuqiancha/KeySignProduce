@@ -112,6 +112,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CertForm.Designer.cs">
+      <DependentUpon>CertForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CertInfo.cs" />
     <Compile Include="Form_AckMake.cs">
       <SubType>Form</SubType>
@@ -142,6 +148,9 @@
     <Compile Include="SQLTestUnit.Designer.cs">
       <DependentUpon>SQLTestUnit.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CertForm.resx">
+      <DependentUpon>CertForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_AckMake.resx">
       <DependentUpon>Form_AckMake.cs</DependentUpon>
     </EmbeddedResource>

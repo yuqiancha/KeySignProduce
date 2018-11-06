@@ -21,7 +21,7 @@ namespace KeySign
 
         Form_AckMake myAckMakeForm = new Form_AckMake();
         SQLTestUnit mySQLTestUnit = new SQLTestUnit();
-
+        CertForm myCertForm = new CertForm();
         public MainForm()
         {
             InitializeComponent();
@@ -33,11 +33,16 @@ namespace KeySign
             label_age.Visible = false;
             Function.UseDataBase = int.Parse(ConfigurationManager.AppSettings["UseDataBase"]);
 
+            if (int.Parse(ConfigurationManager.AppSettings["UseCertForm"]) == 1) button2.Visible = true;
+            else button2.Visible = false;
 
-            SQLClass.connsql = @"server=" + ConfigurationManager.AppSettings["SQLIP"] +
-                ";Database=dmkeybase;uid=" + ConfigurationManager.AppSettings["SQLNAME"] +
-                ";pwd=" + ConfigurationManager.AppSettings["SQLPSWD"] + 
-                ";SslMode="+ ConfigurationManager.AppSettings["SSLMODE"];
+            //MySQLPath
+            SQLClass.connsql = @"" + ConfigurationManager.AppSettings["MySQLPath"];
+
+            //SQLClass.connsql = @"server=" + ConfigurationManager.AppSettings["SQLIP"] +
+            //    ";Database=dmkeybase;uid=" + ConfigurationManager.AppSettings["SQLNAME"] +
+            //    ";pwd=" + ConfigurationManager.AppSettings["SQLPSWD"] + 
+            //    ";SslMode="+ ConfigurationManager.AppSettings["SSLMODE"];
 
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
             dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
@@ -294,6 +299,27 @@ namespace KeySign
             {
                 label_id.Visible = false;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (myCertForm != null)
+            {
+                myCertForm.Activate();
+            }
+            else
+            {
+                myCertForm = new CertForm();
+            }
+            myCertForm.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            string year = dt.Year.ToString();
+            Trace.WriteLine(year);
+            if (year != "2018") this.Close();
         }
     }
 }

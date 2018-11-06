@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -100,6 +101,8 @@
             this.label_age = new System.Windows.Forms.Label();
             this.label_phone = new System.Windows.Forms.Label();
             this.label_id = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -847,11 +850,28 @@
             this.label_id.Text = "身份证格式不正确";
             this.label_id.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(905, 613);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 36);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "单步生成证书窗口";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 661);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_sqlform);
             this.Controls.Add(this.btn_Verify);
@@ -1003,6 +1023,8 @@
         private System.Windows.Forms.Label label_age;
         private System.Windows.Forms.Label label_phone;
         private System.Windows.Forms.Label label_id;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
