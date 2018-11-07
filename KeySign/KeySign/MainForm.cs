@@ -60,6 +60,7 @@ namespace KeySign
             textBox_company_name.Text = ConfigurationManager.AppSettings["company_name"];
             textBox_company_phone.Text = ConfigurationManager.AppSettings["company_phone"];
             textBox_company_address.Text = ConfigurationManager.AppSettings["company_address"];
+            textBox_belong_company.Text = ConfigurationManager.AppSettings["company_belong"];
         }
 
 
@@ -72,7 +73,7 @@ namespace KeySign
             if (rdo_male.Checked)
                 CertInfo.gender = "男";
             else
-                CertInfo.gender = "女";           
+                CertInfo.gender = "女";
 
             CertInfo.age = textBox_age.Text;
             int Fage = 0;
@@ -120,9 +121,9 @@ namespace KeySign
             else
                 CertInfo.issue_type = "补证";
 
-            string CmdStr = "SELECT * FROM tableall WHERE `身份证号` = " + CertInfo.id + ";";
+            string CmdStr = "SELECT * FROM tableall WHERE 身份证号 = " + CertInfo.id + ";";
 
-            if (Function.UseDataBase!=0)
+            if (Function.UseDataBase != 0)
             {
                 using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
                 using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
@@ -143,7 +144,7 @@ namespace KeySign
                             }
                             else//补证
                             {
-                                string CmdStr2 = "UPDATE tableall SET `备注`='作废' WHERE `身份证号` = @id ";
+                                string CmdStr2 = "UPDATE tableall SET 状态='作废' WHERE 身份证号 = @id ";
                                 MySqlCommand cmd2 = new MySqlCommand(CmdStr2, con);
                                 cmd2.Parameters.AddWithValue("@id", CertInfo.id);
                                 cmd2.ExecuteNonQuery();
@@ -157,7 +158,8 @@ namespace KeySign
                     }
                     catch (MySqlException ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.ToString());
+                        MajorLog.Error(ex.ToString());
                     }
 
                 }
@@ -166,22 +168,34 @@ namespace KeySign
             CertInfo.email = textBox_mail.Text;
 
             CertInfo.install_type = null;//安装类型
-            if (checkBox1.Checked)
-                CertInfo.install_type += checkBox1.Text;
 
-            foreach (CheckBox item in panel3.Controls)
+            if (checkBox7.Checked)
             {
-                if (item.Checked)
+                CertInfo.install_type = textBox_instype.Text;
+                if(CertInfo.install_type==null|| CertInfo.install_type == "")
                 {
-                    CertInfo.install_type += item.Text + ",";
+                    MessageBox.Show("至少选择一种安装类型");
+                    return -1;
                 }
             }
-            if (CertInfo.install_type != null)
-                CertInfo.install_type = CertInfo.install_type.Substring(0, CertInfo.install_type.Length - 1);
             else
             {
-                MessageBox.Show("至少选择一种安装类型");
-                return -1;
+                foreach (CheckBox item in panel3.Controls)
+                {
+                    if (item.Checked)
+                    {
+                        CertInfo.install_type += item.Text + ",";
+                    }
+                }
+                if (CertInfo.install_type != null)
+                {
+                    CertInfo.install_type = CertInfo.install_type.Substring(0, CertInfo.install_type.Length - 1);
+                }
+                else
+                {
+                    MessageBox.Show("至少选择一种安装类型");
+                    return -1;
+                }
             }
 
             CertInfo.issue_day = dateTimePicker_issue.Text;//发证日期
@@ -196,7 +210,7 @@ namespace KeySign
             CertInfo.company_phone = textBox_company_phone.Text;
             CertInfo.company_address = textBox_company_address.Text;
             CertInfo.remarks = textBox_Remarks.Text;//备注
-
+            CertInfo.company_belong = textBox_belong_company.Text;
 
             Random rd = new Random();
 
@@ -267,7 +281,7 @@ namespace KeySign
             int.TryParse(textBox_age.Text, out Fage);
             if (Fage < 1 || Fage > 80)
             {
-                label_age.Visible = true;                
+                label_age.Visible = true;
             }
             else
             {
@@ -278,7 +292,7 @@ namespace KeySign
         private void textBox_phone_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new Regex(@"1[3456789]\d{9}$");
-            if(regex.IsMatch(textBox_phone.Text))
+            if (regex.IsMatch(textBox_phone.Text))
             {
                 label_phone.Visible = false;
             }
@@ -320,6 +334,25 @@ namespace KeySign
             string year = dt.Year.ToString();
             Trace.WriteLine(year);
             if (year != "2018") this.Close();
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox7.Checked)
+            {
+                foreach (CheckBox item in panel3.Controls)
+                {
+                    item.Checked = false;
+                    item.Enabled = false;
+                }
+            }
+            else
+            {
+                foreach (CheckBox item in panel3.Controls)
+                {
+                    item.Enabled = true;
+                }
+            }
         }
     }
 }

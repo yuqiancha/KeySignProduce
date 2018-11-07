@@ -46,6 +46,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "增加数据";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
@@ -57,10 +58,12 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "删除数据";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 5);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -79,7 +82,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 34);
             this.button1.TabIndex = 4;
-            this.button1.Text = "连接数据库";
+            this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -111,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(783, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SQLTestUnit";
-            this.Text = "SQLTestUnit";
+            this.Text = "历史证书记录查询";
             this.Load += new System.EventHandler(this.SQLTestUnit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

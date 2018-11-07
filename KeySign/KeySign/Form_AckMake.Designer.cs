@@ -52,6 +52,8 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label_onlyid = new System.Windows.Forms.Label();
+            this.label_company_belong = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -101,11 +103,11 @@
             // 
             this.label_company_address.AutoSize = true;
             this.label_company_address.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_address.Location = new System.Drawing.Point(672, 318);
+            this.label_company_address.Location = new System.Drawing.Point(696, 318);
             this.label_company_address.Name = "label_company_address";
-            this.label_company_address.Size = new System.Drawing.Size(116, 18);
+            this.label_company_address.Size = new System.Drawing.Size(80, 18);
             this.label_company_address.TabIndex = 20;
-            this.label_company_address.Text = "所属单位地址";
+            this.label_company_address.Text = "单位地址";
             // 
             // label_valid_period
             // 
@@ -131,11 +133,11 @@
             // 
             this.label_company_phone.AutoSize = true;
             this.label_company_phone.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_phone.Location = new System.Drawing.Point(672, 268);
+            this.label_company_phone.Location = new System.Drawing.Point(696, 268);
             this.label_company_phone.Name = "label_company_phone";
-            this.label_company_phone.Size = new System.Drawing.Size(116, 18);
+            this.label_company_phone.Size = new System.Drawing.Size(80, 18);
             this.label_company_phone.TabIndex = 23;
-            this.label_company_phone.Text = "所属单位电话";
+            this.label_company_phone.Text = "单位电话";
             // 
             // label_issue_day
             // 
@@ -161,11 +163,11 @@
             // 
             this.label_company_name.AutoSize = true;
             this.label_company_name.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_name.Location = new System.Drawing.Point(672, 218);
+            this.label_company_name.Location = new System.Drawing.Point(696, 218);
             this.label_company_name.Name = "label_company_name";
-            this.label_company_name.Size = new System.Drawing.Size(116, 18);
+            this.label_company_name.Size = new System.Drawing.Size(80, 18);
             this.label_company_name.TabIndex = 32;
-            this.label_company_name.Text = "所属单位名称";
+            this.label_company_name.Text = "单位名称";
             // 
             // label_install_type
             // 
@@ -175,7 +177,7 @@
             this.label_install_type.Name = "label_install_type";
             this.label_install_type.Size = new System.Drawing.Size(80, 18);
             this.label_install_type.TabIndex = 34;
-            this.label_install_type.Text = "安装类型";
+            this.label_install_type.Text = "设备类型";
             // 
             // label_age
             // 
@@ -191,7 +193,7 @@
             // 
             this.label_appkey.AutoSize = true;
             this.label_appkey.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_appkey.Location = new System.Drawing.Point(708, 168);
+            this.label_appkey.Location = new System.Drawing.Point(705, 168);
             this.label_appkey.Name = "label_appkey";
             this.label_appkey.Size = new System.Drawing.Size(71, 18);
             this.label_appkey.TabIndex = 36;
@@ -275,11 +277,34 @@
             this.label_onlyid.AutoSize = true;
             this.label_onlyid.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_onlyid.ForeColor = System.Drawing.Color.Red;
-            this.label_onlyid.Location = new System.Drawing.Point(81, 602);
+            this.label_onlyid.Location = new System.Drawing.Point(341, 469);
             this.label_onlyid.Name = "label_onlyid";
             this.label_onlyid.Size = new System.Drawing.Size(116, 18);
             this.label_onlyid.TabIndex = 71;
             this.label_onlyid.Text = "label_onlyid";
+            // 
+            // label_company_belong
+            // 
+            this.label_company_belong.AutoSize = true;
+            this.label_company_belong.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_company_belong.Location = new System.Drawing.Point(660, 368);
+            this.label_company_belong.Name = "label_company_belong";
+            this.label_company_belong.Size = new System.Drawing.Size(116, 18);
+            this.label_company_belong.TabIndex = 20;
+            this.label_company_belong.Text = "产权所属单位";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button2.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.Location = new System.Drawing.Point(344, 570);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 45);
+            this.button2.TabIndex = 69;
+            this.button2.Text = "打印证书";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form_AckMake
             // 
@@ -288,10 +313,12 @@
             this.ClientSize = new System.Drawing.Size(1034, 661);
             this.Controls.Add(this.label_onlyid);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label_project_name);
             this.Controls.Add(this.label_Remarks);
             this.Controls.Add(this.label_mail);
+            this.Controls.Add(this.label_company_belong);
             this.Controls.Add(this.label_company_address);
             this.Controls.Add(this.label_valid_period);
             this.Controls.Add(this.label_id);
@@ -342,5 +369,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label_onlyid;
+        private System.Windows.Forms.Label label_company_belong;
+        private System.Windows.Forms.Button button2;
     }
 }

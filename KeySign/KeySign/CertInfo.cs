@@ -28,9 +28,13 @@ namespace KeySign
         public static string company_phone;
         public static string company_address;
 
+        public static string company_belong;
+
         public static string remarks;//备注
 
         public static string OnlyID;//证书编号
+
+        public static string state;//状态--新增or补证
 
     }
 }
