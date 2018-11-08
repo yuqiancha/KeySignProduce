@@ -426,10 +426,14 @@ namespace KeySign
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DateTime dt = DateTime.Now;
-            string year = dt.Year.ToString();
-            Trace.WriteLine(year);
-            if (year != "2018") this.Close();
+            string valid = ConfigurationManager.AppSettings["used"];
+            if (valid != "paid")
+            {
+                DateTime dt = DateTime.Now;
+                string year = dt.Year.ToString();
+                Trace.WriteLine(year);
+                if (year != "2018") this.Close();
+            }
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)

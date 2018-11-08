@@ -25,8 +25,63 @@ namespace KeySign
 
             if (button1.Text == "确认并制证")
             {
-                CertInfo.state = "0";
 
+                #region 制证
+
+                try
+                {
+                    MajorLog.Debug("开始制证");
+                    string downCmd = "CN=USER,O=" + CertInfo.OnlyID + ",C=CN";
+                  //  string downCmdRoot = "CN=ROOT,O=TEST,C=CN";
+                    byte[] s = new byte[1024];
+                    int ret = 0;
+
+                    ret = Function.Genuserkey();//产生用户密钥对
+                    if (ret == -1)
+                    {
+                        return;
+                    }
+                    MajorLog.Info("产生用户密钥对");
+
+                    ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
+                    if (ret == -1)
+                    {                   
+                        return;
+                    }
+                    MajorLog.Info("产生用户P10");
+
+                    ret = Function.Genusercer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", downCmd, 1);//产生用户证书
+                    MajorLog.Info("产生用户证书");
+
+                    string strGet2 = System.Text.Encoding.Default.GetString(s, 0, s.Length);
+                    //    int len = strGet2.Length;
+                    //    string downStr = strGet2.Substring(0, len);
+
+                    ret = Function.Importcert(strGet2);
+                    if (ret > 0)
+                    {
+                        MajorLog.Debug("写入证书--成功");
+                    }
+                    else
+                    {
+                        MajorLog.Debug("写入证书--失败");
+                    }
+
+                    timer1.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MajorLog.Debug(ex.ToString());
+                }
+
+
+                #endregion
+
+
+
+
+                CertInfo.state = "0";
                 string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,OnlyID,状态,产权所属单位) " +
                   "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks,@OnlyID,@state,@belong)";
 
@@ -75,99 +130,7 @@ namespace KeySign
                 else
                 {
                     MajorLog.Debug("未使用数据库");
-                }
-
-                #region 制证
-
-                try
-                {
-                    MajorLog.Debug("开始制证");
-
-                    ////string startday = CertInfo.cert_validity_period_start.Replace("/", "") + "000000";
-                    ////string endday = CertInfo.cert_validity_period_end.Replace("/", "") + "000000";
-                    string downCmd = "CN=USER,O=" + CertInfo.OnlyID + ",C=CN";
-                    string downCmdRoot = "CN=ROOT,O=TEST,C=CN";
-
-                    byte[] s = new byte[1024];
-                    int ret = 0;
-                    ////ret = Function.Genrootkey(ref s[0]);//产生根证书密钥对
-                    ////if (ret > 0) MajorLog.Debug("产生根证书密钥对--成功");
-                    ////else MajorLog.Debug("产生根证书密钥对--失败");
-
-                    ////ret = Function.Genrootp10(ref s[0], downCmdRoot);//产生根证书P10   
-                    ////if (ret > 0) MajorLog.Debug("产生根证书P10--成功");
-                    ////else MajorLog.Debug("产生根证书P10--失败");
-
-                    ////ret = Function.Genrootcer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", "CN=USER,O=TEST,C=CN", 1);
-                    ////if (ret > 0) MajorLog.Debug("产生根证书--成功");
-                    ////else MajorLog.Debug("产生根证书--失败");
-
-                    ////ret = Function.Genuserkey();//产生用户密钥对
-                    ////if (ret > 0) MajorLog.Debug("产生用户密钥对--成功");
-                    ////else MajorLog.Debug("产生用户密钥对--失败");
-
-                    ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
-                    if (ret == -1)
-                    {
-                        MessageBox.Show("未插入数字KEY设备，制证失败！");
-
-                        button1.Text = "制证失败";
-                        button1.BackColor = Color.Red;
-
-                        String CmdStr_del = "delete from tableAll WHERE OnlyID = @Cert_OnlyID";
-                        if (Function.UseDataBase != 0)
-                        {
-                            using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
-                            using (MySqlCommand cmd = new MySqlCommand(CmdStr_del, con))
-                            {
-                                try
-                                {
-                                    cmd.Parameters.AddWithValue("@Cert_OnlyID", CertInfo.OnlyID);
-                                    con.Open();
-                                    cmd.ExecuteNonQuery();
-                                    con.Close();
-
-                                }
-                                catch(Exception ex)
-                                {
-                                    MajorLog.Error(ex.ToString());
-                                    MessageBox.Show(ex.Message);
-                                }
-                                }
-                        }
-
-                        return;
-                    }
-
-                    ret = Function.Genusercer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", downCmd, 1);//产生用户证书
-
-
-                    string strGet2 = System.Text.Encoding.Default.GetString(s, 0, s.Length);
-                    //    int len = strGet2.Length;
-                    //    string downStr = strGet2.Substring(0, len);
-
-                    ret = Function.Importcert(strGet2);
-                    if (ret > 0)
-                    {
-                        MajorLog.Debug("写入证书--成功");
-                    }
-                    else
-                    {
-                        MajorLog.Debug("写入证书--失败");
-                    }
-
-                    timer1.Enabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    MajorLog.Debug(ex.ToString());
-                }
-
-
-                #endregion
-
-
+                }         
 
             }
             else
@@ -212,6 +175,10 @@ namespace KeySign
             progressBar1.Maximum = 100;//设置最大长度值
             progressBar1.Value = 0;//设置当前值
             progressBar1.Step = 5;//设置没次增长多少
+
+
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -255,7 +222,7 @@ namespace KeySign
             }
             catch (Exception ex)
             {
-                MessageBox.Show("打码机未连接或出现异常情况，无法正常打印标签！" + ex.Message);
+                MajorLog.Info("打码机未连接或出现异常情况，无法正常打印标签！" + ex.ToString());
             }
         }
     }
