@@ -25,7 +25,7 @@ namespace KeySign
 
             if (button1.Text == "确认并制证")
             {
-                CertInfo.state = "有效";
+                CertInfo.state = "0";
 
                 string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,OnlyID,状态,产权所属单位) " +
                   "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks,@OnlyID,@state,@belong)";
@@ -61,8 +61,6 @@ namespace KeySign
                             con.Open();
                             cmd.ExecuteNonQuery();
                             con.Close();
-
-                            timer1.Enabled = true;
 
                             button1.Text = "制证中...";
                             button1.BackColor = Color.Green;
@@ -109,7 +107,37 @@ namespace KeySign
                     ////else MajorLog.Debug("产生用户密钥对--失败");
 
                     ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
+                    if (ret == -1)
+                    {
+                        MessageBox.Show("未插入数字KEY设备，制证失败！");
 
+                        button1.Text = "制证失败";
+                        button1.BackColor = Color.Red;
+
+                        String CmdStr_del = "delete from tableAll WHERE OnlyID = @Cert_OnlyID";
+                        if (Function.UseDataBase != 0)
+                        {
+                            using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                            using (MySqlCommand cmd = new MySqlCommand(CmdStr_del, con))
+                            {
+                                try
+                                {
+                                    cmd.Parameters.AddWithValue("@Cert_OnlyID", CertInfo.OnlyID);
+                                    con.Open();
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+
+                                }
+                                catch(Exception ex)
+                                {
+                                    MajorLog.Error(ex.ToString());
+                                    MessageBox.Show(ex.Message);
+                                }
+                                }
+                        }
+
+                        return;
+                    }
 
                     ret = Function.Genusercer(ref s[0], "FEDCBA9876543210", "20170101000000", "20270101000000", downCmd, 1);//产生用户证书
 
@@ -127,6 +155,8 @@ namespace KeySign
                     {
                         MajorLog.Debug("写入证书--失败");
                     }
+
+                    timer1.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -162,7 +192,7 @@ namespace KeySign
             label_phone.Text = "手机号:" + CertInfo.phone;
 
             label_id.Text = "身份证号:" + CertInfo.id;
-            label_mail.Text = "邮箱号:" + CertInfo.age;
+            label_mail.Text = "邮箱号:" + CertInfo.email;
             label_issue_type.Text = "证书类型:" + CertInfo.issue_type;
             label_install_type.Text = "设备类型:" + CertInfo.install_type;
             label_issue_day.Text = "安装日期:" + CertInfo.issue_day;
@@ -193,13 +223,13 @@ namespace KeySign
 
                 button1.Text = "制证完成";
                 button1.BackColor = Color.Green;
-               // progressBar1.Visible = false;
+                // progressBar1.Visible = false;
                 button1.Visible = false;
                 button2.Visible = true;
                 label_onlyid.Text = "恭喜您制证成功！\r\n" +
                     "证书编号：" + CertInfo.OnlyID + "\r\n" +
-                    "使用人员："+CertInfo.name + "\r\n" +
-                    "证书有效期："+CertInfo.cert_validity_period;
+                    "使用人员：" + CertInfo.name + "\r\n" +
+                    "证书有效期：" + CertInfo.cert_validity_period;
             }
         }
 
@@ -210,6 +240,11 @@ namespace KeySign
             try
             {
                 ret = Program.openport("Gprinter GP-3120TU");                                           //Open specified printer driver
+                if (ret < 1)
+                {
+                    MessageBox.Show("请检查打印机是否就绪！");
+                    return;
+                }
                 ret = Program.setup("30", "17", "6", "10", "0", "1", "0");                           //Setup the media size and sensor type info
                 ret = Program.clearbuffer();                                                           //Clear image buffer                                                                                                         //    ret = TSCLIB_DLL.barcode("0", "0", "128", "10", "1", "0", "2", "2", "Barcode Test"); //Drawing barcode
                 ret = Program.printerfont("0", "24", "TSS24.BF2", "0", "1", "1", CertInfo.name);        //Drawing printer font

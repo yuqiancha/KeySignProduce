@@ -337,7 +337,7 @@
             this.Controls.Add(this.label_name);
             this.Name = "Form_AckMake";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form_AckMake";
+            this.Text = "制证系统";
             this.Load += new System.EventHandler(this.Form_AckMake_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
