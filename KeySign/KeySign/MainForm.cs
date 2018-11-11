@@ -13,6 +13,8 @@ using MySql.Data.MySqlClient;
 using log4net;
 using log4net.Config;
 using Microsoft.International.Converters.PinYinConverter;
+using NPinyin;
+
 
 namespace KeySign
 {
@@ -46,7 +48,7 @@ namespace KeySign
             //    ";SslMode="+ ConfigurationManager.AppSettings["SSLMODE"];
 
             dateTimePicker_valid_start.Text = (System.DateTime.Now).ToString("yyyy-MM-dd");
-            dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(1)).ToString("yyyy-MM-dd");
+            dateTimePicker_valid_end.Text = (System.DateTime.Now.AddYears(3)).ToString("yyyy-MM-dd");
 
 
             textBox_name.Text = ConfigurationManager.AppSettings["name"];
@@ -167,7 +169,7 @@ namespace KeySign
 
             string CmdStr = "SELECT * FROM tableall WHERE 身份证号 = @CertID";
 
-          
+
 
             if (Function.UseDataBase != 0)
             {
@@ -272,7 +274,7 @@ namespace KeySign
             CertInfo.appid = textBox_appid.Text;
 
 
-            if (textBox_appkey.Text == "123456" || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
+            if (textBox_appkey.Text == textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6) || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
             {
                 if (Regex.IsMatch(textBox_appkey.Text, @"[\d]", RegexOptions.IgnoreCase))
                 {
@@ -280,11 +282,14 @@ namespace KeySign
                 }
                 else
                 {
+                    label_appkey.Visible = true;
+
                     return -1;
                 }
             }
             else
             {
+                label_appkey.Visible = true;
                 return -1;
             }
 
@@ -443,34 +448,122 @@ namespace KeySign
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
+            textBox_appid.Text = "";
+            string trs = Pinyin.GetPinyin(textBox_name.Text);
+            string[] nmlist = Regex.Split(trs, @"\s+");
+
+            if (nmlist.Length >= 2)
             {
-                string r = string.Empty;
-                foreach (char obj in textBox_name.Text)
+                nmlist[0] = nmlist[0].Substring(0, 1).ToUpper();
+                textBox_appid.Text += nmlist[0];
+                for (int i = 1; i < nmlist.Length; i++)
                 {
-                    try
-                    {
-                        ChineseChar chineseChar = new ChineseChar(obj);
-                        string t = chineseChar.Pinyins[0].ToString();
-                        r += t.Substring(0, 1);
-                    }
-                    catch
-                    {
-                        r += obj.ToString();
-                    }
+                    string temp = nmlist[i];
+                    nmlist[i] = temp.Substring(0, 1).ToUpper() + temp.Substring(1, temp.Length - 1);
+                    textBox_appid.Text += nmlist[i];
                 }
-                textBox_appid.Text = r;
+
+                int count = 1;
+                bool valid = false;
+                string appidstr = textBox_appid.Text;
+                string CmdStr = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
+                while (valid != true)
+                {
+                    if (Function.UseDataBase != 0)
+                    {
+                        using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                        using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
+                        {
+                            try
+                            {
+                                cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
+
+                                con.Open();
+                                object obj = cmd.ExecuteScalar();
+                                if (obj != null)
+                                {
+
+                                    appidstr = textBox_appid.Text + (count++).ToString("x2");
+                                    valid = false;
+
+                                }
+                                else
+                                {
+                                    textBox_appid.Text = appidstr;
+                                    valid = true;
+                                    con.Close();
+                                }
+                            }
+                            catch (MySqlException ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                                MajorLog.Error(ex.ToString());
+                            }
+
+                        }
+                    }
+
+                }
+
+
+
             }
-            catch (Exception ex)
+            else
             {
-                textBox_appid.Text = "default";
-                MajorLog.Error(ex.ToString());
+                MajorLog.Error("输入姓名不正确!");
             }
+
+
+
+            //bool GetFisrtNeed = true;
+            //try
+            //{
+            //    string r = string.Empty;
+            //    foreach (char obj in textBox_name.Text)
+            //    {
+            //        try
+            //        {
+            //            ChineseChar chineseChar = new ChineseChar(obj);
+            //            string t = chineseChar.Pinyins[0].ToString();
+            //            if (GetFisrtNeed)
+            //            {
+            //                GetFisrtNeed = false;
+            //                r += t.Substring(0, 1);
+            //            }
+            //            else
+            //            {
+            //                r += t;
+            //            }
+            //        }
+            //        catch
+            //        {
+            //            r += obj.ToString();
+            //        }
+            //    }
+            //    textBox_appid.Text = r;
+            //}
+            //catch (Exception ex)
+            //{
+            //    textBox_appid.Text = "default";
+            //    MajorLog.Error(ex.ToString());
+            //}
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox_appkey.Text = "123456";
+            if ((!Regex.IsMatch(textBox_id.Text, @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$", RegexOptions.IgnoreCase)))
+            {
+                label_id.Visible = true;
+                label_firstID.Visible = true;
+            }
+            else
+            {
+                label_id.Visible = false;
+                label_firstID.Visible = false;
+
+                textBox_appkey.Text = textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6);
+            }
+
         }
 
         private void textBox_mail_TextChanged(object sender, EventArgs e)
@@ -538,11 +631,11 @@ namespace KeySign
 
         private void textBox_appkey_TextChanged(object sender, EventArgs e)
         {
-           // if (textBox_appkey.Text == "123456" || Regex.IsMatch(textBox_appkey.Text, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$ ", RegexOptions.IgnoreCase))
-            if (textBox_appkey.Text == "123456" || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
+            // if (textBox_appkey.Text == "123456" || Regex.IsMatch(textBox_appkey.Text, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$ ", RegexOptions.IgnoreCase))
+            if (textBox_appkey.Text == textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6) || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
             {
                 if (Regex.IsMatch(textBox_appkey.Text, @"[\d]", RegexOptions.IgnoreCase))
-                label_appkey.Visible = false;
+                    label_appkey.Visible = false;
             }
             else
             {

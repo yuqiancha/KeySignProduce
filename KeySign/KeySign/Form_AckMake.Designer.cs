@@ -291,7 +291,7 @@
             this.label_company_belong.Name = "label_company_belong";
             this.label_company_belong.Size = new System.Drawing.Size(116, 18);
             this.label_company_belong.TabIndex = 20;
-            this.label_company_belong.Text = "产权所属单位";
+            this.label_company_belong.Text = "设备所属单位";
             // 
             // button2
             // 

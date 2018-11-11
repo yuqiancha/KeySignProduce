@@ -115,6 +115,7 @@
             this.label_belong = new System.Windows.Forms.Label();
             this.label_company_name = new System.Windows.Forms.Label();
             this.label_project = new System.Windows.Forms.Label();
+            this.label_firstID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -500,7 +501,7 @@
             // 
             // dateTimePicker_issue
             // 
-            this.dateTimePicker_issue.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker_issue.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dateTimePicker_issue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_issue.Location = new System.Drawing.Point(408, 272);
             this.dateTimePicker_issue.Name = "dateTimePicker_issue";
@@ -629,9 +630,9 @@
             this.label_appkey.ForeColor = System.Drawing.Color.Red;
             this.label_appkey.Location = new System.Drawing.Point(781, 198);
             this.label_appkey.Name = "label_appkey";
-            this.label_appkey.Size = new System.Drawing.Size(150, 15);
+            this.label_appkey.Size = new System.Drawing.Size(247, 15);
             this.label_appkey.TabIndex = 1;
-            this.label_appkey.Text = "字母开头且不小于6位";
+            this.label_appkey.Text = "密码不符合规则，请重新生成或输入";
             this.label_appkey.Visible = false;
             // 
             // label37
@@ -849,7 +850,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 15);
             this.label4.TabIndex = 1;
-            this.label4.Text = "产权所属单位";
+            this.label4.Text = "设备所属单位";
             // 
             // label6
             // 
@@ -1009,6 +1010,18 @@
             this.label_project.Text = "此项不能为空";
             this.label_project.Visible = false;
             // 
+            // label_firstID
+            // 
+            this.label_firstID.AutoSize = true;
+            this.label_firstID.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_firstID.ForeColor = System.Drawing.Color.Red;
+            this.label_firstID.Location = new System.Drawing.Point(901, 156);
+            this.label_firstID.Name = "label_firstID";
+            this.label_firstID.Size = new System.Drawing.Size(127, 15);
+            this.label_firstID.TabIndex = 1;
+            this.label_firstID.Text = "请先输入身份证号";
+            this.label_firstID.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1038,6 +1051,7 @@
             this.Controls.Add(this.label_id);
             this.Controls.Add(this.label_phone);
             this.Controls.Add(this.label_age);
+            this.Controls.Add(this.label_firstID);
             this.Controls.Add(this.label_appkey);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
@@ -1192,6 +1206,7 @@
         private System.Windows.Forms.Label label_belong;
         private System.Windows.Forms.Label label_company_name;
         private System.Windows.Forms.Label label_project;
+        private System.Windows.Forms.Label label_firstID;
     }
 }
 

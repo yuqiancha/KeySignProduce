@@ -21,7 +21,8 @@ namespace KeySign
         {
             try
             {
-                string myQuery = "select * from tableAll";
+                //SELECT * FROM tableall ORDER BY `发证日期` DESC
+                string myQuery = "select * from tableall ORDER BY `发证日期` DESC";
                 dataGridView1.DataSource = SQLClass.ExcuteQueryUsingDataAdapter(myQuery);
 
             }
@@ -33,11 +34,17 @@ namespace KeySign
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string CmdStr = "insert into tableall(姓名,年龄,手机号,身份证号) values('平哥', '30', '13817897274', '320981198854012738')";
-            SQLClass.SqlExcuteCMD(CmdStr);
+            //string CmdStr = "insert into tableall(姓名,年龄,手机号,身份证号) values('平哥', '30', '13817897274', '320981198854012738')";
 
-            string myQuery = "select * from tableAll";
+    //       string CmdStr =  string.Format(@"SELECT * FROM tableall WHERE (`姓名` LIKE '%{0}%')", textBox1.Text);
+
+       //     SQLClass.SqlExcuteCMD(CmdStr);
+
+            string myQuery = string.Format(@"SELECT * FROM tableall WHERE (`姓名` LIKE '%{0}%' OR `APPID` LIKE '%{0}%') ORDER BY `发证日期` DESC", textBox1.Text);
             dataGridView1.DataSource = SQLClass.ExcuteQueryUsingDataAdapter(myQuery);
+
+            //     string myQuery = "select * from tableAll";
+            //     dataGridView1.DataSource = SQLClass.ExcuteQueryUsingDataAdapter(myQuery);
 
 
         }
