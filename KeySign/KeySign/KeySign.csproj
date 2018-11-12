@@ -91,9 +91,6 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChnCharInfo">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio International Pack\Simplified Chinese Pin-Yin Conversion Library\ChnCharInfo.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\log4net\log4net.dll</HintPath>
     </Reference>

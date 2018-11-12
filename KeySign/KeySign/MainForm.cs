@@ -12,7 +12,7 @@ using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using log4net;
 using log4net.Config;
-using Microsoft.International.Converters.PinYinConverter;
+//using Microsoft.International.Converters.PinYinConverter;
 using NPinyin;
 
 
@@ -330,7 +330,7 @@ namespace KeySign
 
             Random rd = new Random();
 
-            string OnlyIDwithoutCRC = CertInfo.id.Substring(CertInfo.id.Length - 6, 6) + CertInfo.issue_day.Replace("/", "");
+            string OnlyIDwithoutCRC = CertInfo.id.Substring(CertInfo.id.Length - 6, 6) + CertInfo.issue_day.Replace("/", "").Substring(0,8);
 
             CertInfo.OnlyID = OnlyIDwithoutCRC + rd.Next(0, 32767).ToString("x4");
 

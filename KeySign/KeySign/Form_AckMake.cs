@@ -32,7 +32,7 @@ namespace KeySign
                 {
                     MajorLog.Debug("开始制证");
                     string downCmd = "CN=USER,O=" + CertInfo.OnlyID + ",C=CN";
-                  //  string downCmdRoot = "CN=ROOT,O=TEST,C=CN";
+                    //  string downCmdRoot = "CN=ROOT,O=TEST,C=CN";
                     byte[] s = new byte[1024];
                     int ret = 0;
 
@@ -45,7 +45,7 @@ namespace KeySign
 
                     ret = Function.Genuserp10(ref s[0], downCmd);//产生用户P10
                     if (ret == -1)
-                    {                   
+                    {
                         return;
                     }
                     MajorLog.Info("产生用户P10");
@@ -130,7 +130,7 @@ namespace KeySign
                 else
                 {
                     MajorLog.Debug("未使用数据库");
-                }         
+                }
 
             }
             else
@@ -209,14 +209,25 @@ namespace KeySign
                 ret = Program.openport("Gprinter GP-3120TU");                                           //Open specified printer driver
                 if (ret < 1)
                 {
-                    MessageBox.Show("请检查打印机是否就绪！");
+               //     MessageBox.Show("请检查打印机是否就绪！");
                     return;
                 }
+                string print1 = "姓名:" + CertInfo.name;
+                string print2 = "发证日期:" + CertInfo.issue_day.Substring(2,8);
+                string print3 = CertInfo.OnlyID;
+
                 ret = Program.setup("30", "17", "6", "10", "0", "1", "0");                           //Setup the media size and sensor type info
                 ret = Program.clearbuffer();                                                           //Clear image buffer                                                                                                         //    ret = TSCLIB_DLL.barcode("0", "0", "128", "10", "1", "0", "2", "2", "Barcode Test"); //Drawing barcode
-                ret = Program.printerfont("0", "24", "TSS24.BF2", "0", "1", "1", CertInfo.name);        //Drawing printer font
-                ret = Program.printerfont("0", "56", "TSS24.BF2", "0", "1", "1", CertInfo.issue_day);        //Drawing printer font
-                ret = Program.printerfont("0", "88", "TSS24.BF2", "0", "1", "1", CertInfo.OnlyID);        //Drawing printer font
+                ret = Program.printerfont("0", "24", "TSS24.BF2", "0", "1", "1", print1);        //Drawing printer font
+                ret = Program.printerfont("0", "56", "TSS24.BF2", "0", "1", "1", print2);        //Drawing printer font
+                ret = Program.printerfont("0", "88", "TSS24.BF2", "0", "1", "1", print3);        //Drawing printer font
+
+                //ret = Program.setup("40", "32", "6", "10", "0", "1", "0");                           //Setup the media size and sensor type info
+                //ret = Program.clearbuffer();                                                           //Clear image buffer                                                                                                         //    ret = TSCLIB_DLL.barcode("0", "0", "128", "10", "1", "0", "2", "2", "Barcode Test"); //Drawing barcode
+                //ret = Program.printerfont("0", "40", "TSS24.BF2", "0", "1", "1", print1);        //Drawing printer font
+                //ret = Program.printerfont("0", "80", "TSS24.BF2", "0", "1", "1", print2);        //Drawing printer font
+                //ret = Program.printerfont("0", "120", "TSS24.BF2", "0", "1", "1", print3);        //Drawing printer font
+
                 ret = Program.printlabel("1", "1");                                                    //Print labels
                 ret = Program.closeport();
             }
