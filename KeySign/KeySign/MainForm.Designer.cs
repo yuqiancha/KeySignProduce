@@ -597,7 +597,6 @@
             this.textBox_Remarks.Name = "textBox_Remarks";
             this.textBox_Remarks.Size = new System.Drawing.Size(667, 67);
             this.textBox_Remarks.TabIndex = 0;
-            this.textBox_Remarks.Text = "无";
             this.textBox_Remarks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
@@ -630,9 +629,9 @@
             this.label_appkey.ForeColor = System.Drawing.Color.Red;
             this.label_appkey.Location = new System.Drawing.Point(781, 198);
             this.label_appkey.Name = "label_appkey";
-            this.label_appkey.Size = new System.Drawing.Size(247, 15);
+            this.label_appkey.Size = new System.Drawing.Size(187, 15);
             this.label_appkey.TabIndex = 1;
-            this.label_appkey.Text = "密码不符合规则，请重新生成或输入";
+            this.label_appkey.Text = "密码至少六位，请重新输入";
             this.label_appkey.Visible = false;
             // 
             // label37

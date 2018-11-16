@@ -188,7 +188,7 @@ namespace KeySign
                             Trace.WriteLine(dr);
                             if (CertInfo.issue_type == "新领")//新领冲突
                             {
-                                MessageBox.Show("数据库中已存在此身份证号，请返回进行补证操作！");
+                                MessageBox.Show("该身份证号码已进行过制证，请选择证书类型为补证！");
                                 con.Close();
                                 return -1;
                             }
@@ -330,7 +330,7 @@ namespace KeySign
 
             Random rd = new Random();
 
-            string OnlyIDwithoutCRC = CertInfo.id.Substring(CertInfo.id.Length - 6, 6) + CertInfo.issue_day.Replace("/", "").Substring(0,8);
+            string OnlyIDwithoutCRC = CertInfo.id.Substring(CertInfo.id.Length - 6, 6) + CertInfo.issue_day.Replace("/", "").Substring(0, 8);
 
             CertInfo.OnlyID = OnlyIDwithoutCRC + rd.Next(0, 32767).ToString("x4");
 
@@ -583,13 +583,16 @@ namespace KeySign
         private void textBox_company_phone_TextChanged(object sender, EventArgs e)
         {
             //^(\d{3.4}-)\d{7,8}$
-            if ((!Regex.IsMatch(textBox_company_phone.Text, @"^(\d{3,4}-)\d{7,8}$", RegexOptions.IgnoreCase)))
+            if (Regex.IsMatch(textBox_company_phone.Text, @"^(\d{3,4}-)\d{7,8}$") || Regex.IsMatch(textBox_company_phone.Text, @"1[3456789]\d{9}$"))
             {
-                label_company_phone.Visible = true;
+                label_company_phone.Visible = false;
             }
             else
             {
-                label_company_phone.Visible = false;
+
+                    label_company_phone.Visible = true;
+                
+
             }
         }
 

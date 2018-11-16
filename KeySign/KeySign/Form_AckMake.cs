@@ -82,7 +82,7 @@ namespace KeySign
 
 
                 CertInfo.state = "0";
-                string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,安装类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,OnlyID,状态,产权所属单位) " +
+                string CmdStr = "insert into tableall(姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,设备类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,备注,证书编号,状态,设备所属单位) " +
                   "values(@name,@gender, @age, @phone, @id,@mail,@issue_type,@install_type,@issue_day,@valid_period,@project_name,@appid,@appkey,@company_name,@company_phone,@company_address,@remarks,@OnlyID,@state,@belong)";
 
                 if (Function.UseDataBase != 0)
@@ -158,18 +158,18 @@ namespace KeySign
             label_mail.Text = "邮箱号:" + CertInfo.email;
             label_issue_type.Text = "证书类型:" + CertInfo.issue_type;
             label_install_type.Text = "设备类型:" + CertInfo.install_type;
-            label_issue_day.Text = "安装日期:" + CertInfo.issue_day;
+            label_issue_day.Text = "发证日期:" + CertInfo.issue_day;
             CertInfo.cert_validity_period = CertInfo.cert_validity_period_start + "至" + CertInfo.cert_validity_period_end;
             label_valid_period.Text = "证书有效期:" + CertInfo.cert_validity_period;
 
             label_project_name.Text = "项目名称:" + CertInfo.project_name;
             label_appid.Text = "APP ID:" + CertInfo.appid;
             label_appkey.Text = "APP密码:" + CertInfo.appkey;
-            label_company_name.Text = "所属单位名称:" + CertInfo.company_name;
-            label_company_phone.Text = "所属单位电话:" + CertInfo.company_phone;
-            label_company_address.Text = "所属单位地址:" + CertInfo.company_address;
+            label_company_name.Text = "单位名称:" + CertInfo.company_name;
+            label_company_phone.Text = "单位电话:" + CertInfo.company_phone;
+            label_company_address.Text = "单位地址:" + CertInfo.company_address;
             label_Remarks.Text = "备注:" + CertInfo.remarks;
-            label_company_belong.Text = "产权所属单位:" + CertInfo.company_belong;
+            label_company_belong.Text = "设备所属单位:" + CertInfo.company_belong;
 
 
             progressBar1.Maximum = 100;//设置最大长度值

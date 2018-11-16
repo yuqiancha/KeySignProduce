@@ -22,7 +22,8 @@ namespace KeySign
             try
             {
                 //SELECT * FROM tableall ORDER BY `发证日期` DESC
-                string myQuery = "select * from tableall ORDER BY `发证日期` DESC";
+                //  string myQuery = "select * from tableall ORDER BY `发证日期` DESC";
+                string myQuery = "select 证书编号,姓名,性别,年龄,手机号,身份证号,邮箱账号,证书类型,设备类型,发证日期,证书有效期,项目名称,APPID,APP密码,所属单位名称,所属单位电话,所属单位地址,设备所属单位,备注 from tableall ORDER BY `发证日期` DESC";
                 dataGridView1.DataSource = SQLClass.ExcuteQueryUsingDataAdapter(myQuery);
 
             }
