@@ -627,11 +627,11 @@
             this.label_appkey.AutoSize = true;
             this.label_appkey.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_appkey.ForeColor = System.Drawing.Color.Red;
-            this.label_appkey.Location = new System.Drawing.Point(781, 198);
+            this.label_appkey.Location = new System.Drawing.Point(760, 198);
             this.label_appkey.Name = "label_appkey";
-            this.label_appkey.Size = new System.Drawing.Size(187, 15);
+            this.label_appkey.Size = new System.Drawing.Size(262, 15);
             this.label_appkey.TabIndex = 1;
-            this.label_appkey.Text = "密码至少六位，请重新输入";
+            this.label_appkey.Text = "密码至少六位，字母开头，请重新输入";
             this.label_appkey.Visible = false;
             // 
             // label37
