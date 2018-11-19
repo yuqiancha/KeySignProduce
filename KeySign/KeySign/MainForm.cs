@@ -21,7 +21,6 @@ namespace KeySign
 
     public partial class MainForm : Form
     {
-
         Form_AckMake myAckMakeForm = new Form_AckMake();
         SQLTestUnit mySQLTestUnit = new SQLTestUnit();
         CertForm myCertForm = new CertForm();
@@ -248,7 +247,7 @@ namespace KeySign
             }
             else
             {
-                MessageBox.Show("至少选择一种安装类型");
+                MessageBox.Show("至少选择一种设备类型");
                 return -1;
             }
 
