@@ -73,7 +73,7 @@
             // 
             this.label_project_name.AutoSize = true;
             this.label_project_name.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_project_name.Location = new System.Drawing.Point(326, 318);
+            this.label_project_name.Location = new System.Drawing.Point(696, 118);
             this.label_project_name.Name = "label_project_name";
             this.label_project_name.Size = new System.Drawing.Size(80, 18);
             this.label_project_name.TabIndex = 31;
@@ -83,7 +83,7 @@
             // 
             this.label_Remarks.AutoSize = true;
             this.label_Remarks.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Remarks.Location = new System.Drawing.Point(355, 368);
+            this.label_Remarks.Location = new System.Drawing.Point(66, 416);
             this.label_Remarks.Name = "label_Remarks";
             this.label_Remarks.Size = new System.Drawing.Size(44, 18);
             this.label_Remarks.TabIndex = 18;
@@ -93,7 +93,7 @@
             // 
             this.label_mail.AutoSize = true;
             this.label_mail.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_mail.Location = new System.Drawing.Point(51, 368);
+            this.label_mail.Location = new System.Drawing.Point(340, 218);
             this.label_mail.Name = "label_mail";
             this.label_mail.Size = new System.Drawing.Size(62, 18);
             this.label_mail.TabIndex = 19;
@@ -103,7 +103,7 @@
             // 
             this.label_company_address.AutoSize = true;
             this.label_company_address.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_address.Location = new System.Drawing.Point(696, 318);
+            this.label_company_address.Location = new System.Drawing.Point(696, 268);
             this.label_company_address.Name = "label_company_address";
             this.label_company_address.Size = new System.Drawing.Size(80, 18);
             this.label_company_address.TabIndex = 20;
@@ -113,7 +113,7 @@
             // 
             this.label_valid_period.AutoSize = true;
             this.label_valid_period.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_valid_period.Location = new System.Drawing.Point(311, 268);
+            this.label_valid_period.Location = new System.Drawing.Point(12, 318);
             this.label_valid_period.Name = "label_valid_period";
             this.label_valid_period.Size = new System.Drawing.Size(98, 18);
             this.label_valid_period.TabIndex = 21;
@@ -123,7 +123,7 @@
             // 
             this.label_id.AutoSize = true;
             this.label_id.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_id.Location = new System.Drawing.Point(36, 318);
+            this.label_id.Location = new System.Drawing.Point(322, 168);
             this.label_id.Name = "label_id";
             this.label_id.Size = new System.Drawing.Size(80, 18);
             this.label_id.TabIndex = 22;
@@ -133,7 +133,7 @@
             // 
             this.label_company_phone.AutoSize = true;
             this.label_company_phone.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_phone.Location = new System.Drawing.Point(696, 268);
+            this.label_company_phone.Location = new System.Drawing.Point(696, 218);
             this.label_company_phone.Name = "label_company_phone";
             this.label_company_phone.Size = new System.Drawing.Size(80, 18);
             this.label_company_phone.TabIndex = 23;
@@ -143,7 +143,7 @@
             // 
             this.label_issue_day.AutoSize = true;
             this.label_issue_day.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_issue_day.Location = new System.Drawing.Point(325, 218);
+            this.label_issue_day.Location = new System.Drawing.Point(30, 268);
             this.label_issue_day.Name = "label_issue_day";
             this.label_issue_day.Size = new System.Drawing.Size(80, 18);
             this.label_issue_day.TabIndex = 24;
@@ -153,7 +153,7 @@
             // 
             this.label_phone.AutoSize = true;
             this.label_phone.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_phone.Location = new System.Drawing.Point(51, 268);
+            this.label_phone.Location = new System.Drawing.Point(340, 118);
             this.label_phone.Name = "label_phone";
             this.label_phone.Size = new System.Drawing.Size(62, 18);
             this.label_phone.TabIndex = 25;
@@ -163,7 +163,7 @@
             // 
             this.label_company_name.AutoSize = true;
             this.label_company_name.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_name.Location = new System.Drawing.Point(696, 218);
+            this.label_company_name.Location = new System.Drawing.Point(696, 168);
             this.label_company_name.Name = "label_company_name";
             this.label_company_name.Size = new System.Drawing.Size(80, 18);
             this.label_company_name.TabIndex = 32;
@@ -173,7 +173,7 @@
             // 
             this.label_install_type.AutoSize = true;
             this.label_install_type.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_install_type.Location = new System.Drawing.Point(325, 168);
+            this.label_install_type.Location = new System.Drawing.Point(322, 368);
             this.label_install_type.Name = "label_install_type";
             this.label_install_type.Size = new System.Drawing.Size(80, 18);
             this.label_install_type.TabIndex = 34;
@@ -193,7 +193,7 @@
             // 
             this.label_appkey.AutoSize = true;
             this.label_appkey.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_appkey.Location = new System.Drawing.Point(705, 168);
+            this.label_appkey.Location = new System.Drawing.Point(331, 318);
             this.label_appkey.Name = "label_appkey";
             this.label_appkey.Size = new System.Drawing.Size(71, 18);
             this.label_appkey.TabIndex = 36;
@@ -203,7 +203,7 @@
             // 
             this.label_issue_type.AutoSize = true;
             this.label_issue_type.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_issue_type.Location = new System.Drawing.Point(325, 118);
+            this.label_issue_type.Location = new System.Drawing.Point(30, 368);
             this.label_issue_type.Name = "label_issue_type";
             this.label_issue_type.Size = new System.Drawing.Size(80, 18);
             this.label_issue_type.TabIndex = 37;
@@ -223,7 +223,7 @@
             // 
             this.label_appid.AutoSize = true;
             this.label_appid.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_appid.Location = new System.Drawing.Point(714, 118);
+            this.label_appid.Location = new System.Drawing.Point(340, 268);
             this.label_appid.Name = "label_appid";
             this.label_appid.Size = new System.Drawing.Size(62, 18);
             this.label_appid.TabIndex = 29;
@@ -287,7 +287,7 @@
             // 
             this.label_company_belong.AutoSize = true;
             this.label_company_belong.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_company_belong.Location = new System.Drawing.Point(660, 368);
+            this.label_company_belong.Location = new System.Drawing.Point(660, 318);
             this.label_company_belong.Name = "label_company_belong";
             this.label_company_belong.Size = new System.Drawing.Size(116, 18);
             this.label_company_belong.TabIndex = 20;

@@ -95,8 +95,17 @@ namespace KeySign
                         {
                             return;
                         }
+                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
                         string print1 = "姓名:" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//
+
+                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
+
+                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString().Substring(2, 8));
+
                         string print2 = "发证日期:" + dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString().Substring(2, 8);
+
+                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+
                         string print3 = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                         DialogResult dr = MessageBox.Show(print1 +"\n"+print2+"\n"+print3, "是否打印", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
