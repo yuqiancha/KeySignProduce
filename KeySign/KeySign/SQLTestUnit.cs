@@ -77,7 +77,11 @@ namespace KeySign
 
         private void SQLTestUnit_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.DataSource = null;
+            if (dataGridView1.Columns.Count == 1)
+            {
+                dataGridView1.Columns.RemoveAt(0);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
