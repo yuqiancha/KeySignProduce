@@ -84,13 +84,14 @@ namespace KeySign
 
         public int VerifyInfo()
         {
-            if (textBox_name.Text == null || textBox_name.Text == "")
+            if (!Regex.IsMatch(textBox_name.Text, @"^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$"))
             {
-                MessageBox.Show("姓名不能为空，请重新输入！");
+                label_name.Visible = true;
                 return -1;
             }
             else
             {
+                label_name.Visible = false;
                 CertInfo.name = textBox_name.Text;
             }
 
@@ -167,8 +168,6 @@ namespace KeySign
                 CertInfo.issue_type = "补证";
 
             string CmdStr = "SELECT * FROM tableall WHERE 身份证号 = @CertID";
-
-
 
             if (Function.UseDataBase != 0)
             {
@@ -267,10 +266,59 @@ namespace KeySign
 
             if (textBox_appid.Text == null || textBox_appid.Text == "")
             {
-                MessageBox.Show("APPID不能为空，请重新输入！");
+                label_appid1.Visible = true;
                 return -1;
             }
+            else
+            {
+                label_appid1.Visible = false;
+            }
             CertInfo.appid = textBox_appid.Text;
+
+
+
+            #region 验证APPID
+
+            string appidstr = textBox_appid.Text;
+            string CmdStr3 = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
+            if (Function.UseDataBase != 0)
+            {
+                using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                using (MySqlCommand cmd = new MySqlCommand(CmdStr3, con))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
+
+                        con.Open();
+                        object obj = cmd.ExecuteScalar();
+                        if (obj != null)
+                        {
+                            label_appid2.Visible = true;
+                            return -1;
+                        }
+                        else
+                        {
+                            textBox_appid.Text = appidstr;
+                            label_appid2.Visible = false;
+                          
+                            con.Close();
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        MajorLog.Error(ex.ToString());
+                    }
+
+                }
+            }
+
+
+            #endregion
+
+
+
 
 
             if (textBox_appkey.Text == textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6) || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
@@ -447,6 +495,8 @@ namespace KeySign
 
         private void button4_Click(object sender, EventArgs e)
         {
+            label_appid1.Visible = false;
+            label_appid2.Visible = false;
             textBox_appid.Text = "";
             string trs = Pinyin.GetPinyin(textBox_name.Text);
             string[] nmlist = Regex.Split(trs, @"\s+");
@@ -589,8 +639,8 @@ namespace KeySign
             else
             {
 
-                    label_company_phone.Visible = true;
-                
+                label_company_phone.Visible = true;
+
 
             }
         }
@@ -642,6 +692,30 @@ namespace KeySign
             else
             {
                 label_appkey.Visible = true;
+            }
+        }
+
+        private void textBox_name_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(textBox_name.Text, @"^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$"))
+            {
+                label_name.Visible = true;
+            }
+            else
+            {
+                label_name.Visible = false;
+            }
+        }
+
+        private void textBox_project_name_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_project_name.Text == null || textBox_project_name.Text == "")
+            {
+                label_project.Visible = true;
+            }
+            else
+            {
+                label_project.Visible = false;
             }
         }
     }

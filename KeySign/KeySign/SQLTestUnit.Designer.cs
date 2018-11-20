@@ -41,7 +41,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(470, 2);
+            this.button3.Location = new System.Drawing.Point(477, 2);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 26);
@@ -53,7 +53,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(626, 2);
+            this.button2.Location = new System.Drawing.Point(630, 2);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 26);
@@ -80,10 +80,11 @@
             // 
             // button1
             // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(2, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 26);
+            this.button1.Size = new System.Drawing.Size(96, 26);
             this.button1.TabIndex = 4;
             this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
@@ -92,11 +93,11 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.9834F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.05109F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.73563F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.58343F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.36478F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.52589F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.52589F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
@@ -115,20 +116,20 @@
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(89, 6);
+            this.textBox1.Location = new System.Drawing.Point(103, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 21);
+            this.textBox1.Size = new System.Drawing.Size(148, 21);
             this.textBox1.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(246, 0);
+            this.label1.Location = new System.Drawing.Point(257, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 30);
+            this.label1.Size = new System.Drawing.Size(113, 30);
             this.label1.TabIndex = 9;
-            this.label1.Text = "输入APPID可模糊查询";
+            this.label1.Text = "输入姓名可模糊查询";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SQLTestUnit
@@ -138,6 +139,7 @@
             this.ClientSize = new System.Drawing.Size(783, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SQLTestUnit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "历史证书记录查询";
             this.Load += new System.EventHandler(this.SQLTestUnit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

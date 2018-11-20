@@ -36,7 +36,7 @@ namespace KeySign
                 DataGridViewButtonColumn btncolumn = new DataGridViewButtonColumn();
                 btncolumn.HeaderText = "打印";
                 btncolumn.Name = "print";
-                btncolumn.DefaultCellStyle.NullValue = "打印";
+                btncolumn.DefaultCellStyle.NullValue = "打印标签";
                 dataGridView1.Columns.Add(btncolumn);
 
                 dataGridView1.Columns[0].Width = 120;
@@ -86,7 +86,6 @@ namespace KeySign
             {
                 if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "打印")
                 {
-
                     int ret = 0;
                     try
                     {
@@ -95,18 +94,24 @@ namespace KeySign
                         {
                             return;
                         }
-                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-                        string print1 = "姓名:" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//
+
+                        if (dataGridView1.Columns[0].HeaderText != "证书编号"|| dataGridView1.Columns[1].HeaderText != "姓名"|| dataGridView1.Columns[9].HeaderText != "发证日期")
+                        {
+                            MessageBox.Show("异常情况，请重新打开软件再尝试");
+                            return;
+                        }
+                            string print1 = "姓名:" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();//
+                            MajorLog.Info(print1);
+                        
 
                         MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString());
-
                         MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString().Substring(2, 8));
 
                         string print2 = "发证日期:" + dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString().Substring(2, 8);
-
-                        MajorLog.Info(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                      
 
                         string print3 = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        MajorLog.Info(print3);
 
                         DialogResult dr = MessageBox.Show(print1 +"\n"+print2+"\n"+print3, "是否打印", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                         if (dr == DialogResult.OK)
@@ -127,7 +132,7 @@ namespace KeySign
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("打码机未连接或出现异常情况，无法正常打印标签!");
+                        MessageBox.Show("异常情况，无法正常打印标签!"+ex.Message);
                         MajorLog.Info("打码机未连接或出现异常情况，无法正常打印标签！" + ex.ToString());
                     }
 
