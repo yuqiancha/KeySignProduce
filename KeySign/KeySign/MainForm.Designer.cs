@@ -332,6 +332,7 @@
             this.rdo_new.TabStop = true;
             this.rdo_new.Text = "新领";
             this.rdo_new.UseVisualStyleBackColor = true;
+            this.rdo_new.Click += new System.EventHandler(this.rdo_new_Click);
             // 
             // rdo_add
             // 
@@ -342,6 +343,7 @@
             this.rdo_add.TabIndex = 2;
             this.rdo_add.Text = "补证";
             this.rdo_add.UseVisualStyleBackColor = true;
+            this.rdo_add.Click += new System.EventHandler(this.rdo_new_Click);
             // 
             // textBox_appid
             // 
@@ -350,6 +352,7 @@
             this.textBox_appid.Size = new System.Drawing.Size(173, 21);
             this.textBox_appid.TabIndex = 0;
             this.textBox_appid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_appid.TextChanged += new System.EventHandler(this.textBox_appid_TextChanged);
             // 
             // label25
             // 

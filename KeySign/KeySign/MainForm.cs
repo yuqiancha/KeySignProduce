@@ -279,49 +279,81 @@ namespace KeySign
 
             #region 验证APPID
 
-            string appidstr = textBox_appid.Text;
-            string CmdStr3 = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
-            if (Function.UseDataBase != 0)
+            if (rdo_new.Checked)
             {
-                using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
-                using (MySqlCommand cmd = new MySqlCommand(CmdStr3, con))
+                string appidstr = textBox_appid.Text;
+                string CmdStr3 = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
+                if (Function.UseDataBase != 0)
                 {
-                    try
+                    using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                    using (MySqlCommand cmd = new MySqlCommand(CmdStr3, con))
                     {
-                        cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
-
-                        con.Open();
-                        object obj = cmd.ExecuteScalar();
-                        if (obj != null)
+                        try
                         {
-                            label_appid2.Visible = true;
-                            return -1;
-                        }
-                        else
-                        {
-                            textBox_appid.Text = appidstr;
-                            label_appid2.Visible = false;
-                          
-                            con.Close();
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                        MajorLog.Error(ex.ToString());
-                    }
+                            cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
 
+                            con.Open();
+                            object obj = cmd.ExecuteScalar();
+                            if (obj != null)
+                            {
+                                label_appid2.Visible = true;
+                                return -1;
+                            }
+                            else
+                            {
+                                textBox_appid.Text = appidstr;
+                                label_appid2.Visible = false;
+
+                                con.Close();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            MajorLog.Error(ex.ToString());
+                        }
+
+                    }
                 }
             }
+            else
+            {
+                string CmdStr3 = "SELECT appid FROM tableall WHERE `身份证号`= @CertID";
+                if (Function.UseDataBase != 0)
+                {
+                    using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                    using (MySqlCommand cmd = new MySqlCommand(CmdStr3, con))
+                    {
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@CertID", textBox_id.Text);
 
+                            con.Open();
+                            object obj = cmd.ExecuteScalar();
+                            if (obj != null && obj.ToString()==textBox_appid.Text)
+                            {
+                                label_appid2.Visible = false;
+                                con.Close();
+                            }
+                            else
+                            {
+                                label_appid2.Visible = true;
+                                con.Close();
+                                return -1;                                
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            MajorLog.Error(ex.ToString());
+                        }
 
+                    }
+                }
+            }
             #endregion
 
-
-
-
-
-            if (textBox_appkey.Text == textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6) || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
             {
                 if (Regex.IsMatch(textBox_appkey.Text, @"[\d]", RegexOptions.IgnoreCase))
                 {
@@ -495,124 +527,156 @@ namespace KeySign
 
         private void button4_Click(object sender, EventArgs e)
         {
-            label_appid1.Visible = false;
-            label_appid2.Visible = false;
+            //  label_appid1.Visible = false;
+            //  label_appid2.Visible = false;
             textBox_appid.Text = "";
-            string trs = Pinyin.GetPinyin(textBox_name.Text);
-            string[] nmlist = Regex.Split(trs, @"\s+");
 
-            if (nmlist.Length >= 2)
+            if (rdo_new.Checked)
             {
-                nmlist[0] = nmlist[0].Substring(0, 1).ToUpper();
-                textBox_appid.Text += nmlist[0];
-                for (int i = 1; i < nmlist.Length; i++)
+                string trs = Pinyin.GetPinyin(textBox_name.Text);
+                string[] nmlist = Regex.Split(trs, @"\s+");
+                if (nmlist.Length >= 2)
                 {
-                    string temp = nmlist[i];
-                    nmlist[i] = temp.Substring(0, 1).ToUpper() + temp.Substring(1, temp.Length - 1);
-                    textBox_appid.Text += nmlist[i];
-                }
-
-                int count = 1;
-                bool valid = false;
-                string appidstr = textBox_appid.Text;
-                string CmdStr = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
-                while (valid != true)
-                {
-                    if (Function.UseDataBase != 0)
+                    nmlist[0] = nmlist[0].Substring(0, 1).ToUpper();
+                    textBox_appid.Text += nmlist[0];
+                    for (int i = 1; i < nmlist.Length; i++)
                     {
-                        using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
-                        using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
-                        {
-                            try
-                            {
-                                cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
-
-                                con.Open();
-                                object obj = cmd.ExecuteScalar();
-                                if (obj != null)
-                                {
-
-                                    appidstr = textBox_appid.Text + (count++).ToString("x2");
-                                    valid = false;
-
-                                }
-                                else
-                                {
-                                    textBox_appid.Text = appidstr;
-                                    valid = true;
-                                    con.Close();
-                                }
-                            }
-                            catch (MySqlException ex)
-                            {
-                                MessageBox.Show(ex.ToString());
-                                MajorLog.Error(ex.ToString());
-                            }
-
-                        }
+                        string temp = nmlist[i];
+                        nmlist[i] = temp.Substring(0, 1).ToUpper() + temp.Substring(1, temp.Length - 1);
+                        textBox_appid.Text += nmlist[i];
                     }
 
+                    int count = 1;
+                    bool valid = false;
+                    string appidstr = textBox_appid.Text;
+                    string CmdStr = "SELECT * FROM tableall WHERE `APPID`= @CertAPPID";
+                    while (valid != true)
+                    {
+                        if (Function.UseDataBase != 0)
+                        {
+                            using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                            using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
+                            {
+                                try
+                                {
+                                    cmd.Parameters.AddWithValue("@CertAPPID", appidstr);
+
+                                    con.Open();
+                                    object obj = cmd.ExecuteScalar();
+                                    if (obj != null)
+                                    {
+
+                                        appidstr = textBox_appid.Text + (count++).ToString("x2");
+                                        valid = false;
+
+                                    }
+                                    else
+                                    {
+                                        textBox_appid.Text = appidstr;
+                                        valid = true;
+                                        con.Close();
+                                    }
+                                }
+                                catch (MySqlException ex)
+                                {
+                                    MessageBox.Show(ex.ToString());
+                                    MajorLog.Error(ex.ToString());
+                                }
+                            }
+                        }
+                    }
                 }
-
-
-
+                else
+                {
+                    MajorLog.Error("输入姓名不正确!");
+                }
             }
             else
             {
-                MajorLog.Error("输入姓名不正确!");
+                string CmdStr = "SELECT appid FROM tableall WHERE `身份证号`= @CertID";
+                if (Function.UseDataBase != 0)
+                {
+                    using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                    using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
+                    {
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@CertID", textBox_id.Text);
+
+                            con.Open();
+                            object obj = cmd.ExecuteScalar();
+                            if (obj != null)
+                            {
+                                textBox_appid.Text = obj.ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("数据库中不存在此身份证，请新领证书");
+                            }
+                            con.Close();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            MajorLog.Error(ex.ToString());
+                        }
+                    }
+                }
             }
-
-
-
-            //bool GetFisrtNeed = true;
-            //try
-            //{
-            //    string r = string.Empty;
-            //    foreach (char obj in textBox_name.Text)
-            //    {
-            //        try
-            //        {
-            //            ChineseChar chineseChar = new ChineseChar(obj);
-            //            string t = chineseChar.Pinyins[0].ToString();
-            //            if (GetFisrtNeed)
-            //            {
-            //                GetFisrtNeed = false;
-            //                r += t.Substring(0, 1);
-            //            }
-            //            else
-            //            {
-            //                r += t;
-            //            }
-            //        }
-            //        catch
-            //        {
-            //            r += obj.ToString();
-            //        }
-            //    }
-            //    textBox_appid.Text = r;
-            //}
-            //catch (Exception ex)
-            //{
-            //    textBox_appid.Text = "default";
-            //    MajorLog.Error(ex.ToString());
-            //}
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if ((!Regex.IsMatch(textBox_id.Text, @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$", RegexOptions.IgnoreCase)))
+            if (rdo_new.Checked)
             {
-                label_id.Visible = true;
-                label_firstID.Visible = true;
+                if ((!Regex.IsMatch(textBox_id.Text, @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$", RegexOptions.IgnoreCase)))
+                {
+                    label_id.Visible = true;
+                    label_firstID.Visible = true;
+                }
+                else
+                {
+                    label_id.Visible = false;
+                    label_firstID.Visible = false;
+
+                    textBox_appkey.Text = 'a' + textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6);
+                }
             }
             else
             {
-                label_id.Visible = false;
-                label_firstID.Visible = false;
+                string CmdStr = "SELECT app密码 FROM tableall WHERE `身份证号`= @CertID";
+                if (Function.UseDataBase != 0)
+                {
+                    using (MySqlConnection con = new MySqlConnection(SQLClass.connsql))
+                    using (MySqlCommand cmd = new MySqlCommand(CmdStr, con))
+                    {
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@CertID", textBox_id.Text);
 
-                textBox_appkey.Text = textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6);
+                            con.Open();
+                            object obj = cmd.ExecuteScalar();
+                            if (obj != null)
+                            {
+                                textBox_appkey.Text = obj.ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("数据库中不存在此身份证，请新领证书");
+                            }
+                            con.Close();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            MajorLog.Error(ex.ToString());
+                        }
+                    }
+                }
+
+
+
             }
-
         }
 
         private void textBox_mail_TextChanged(object sender, EventArgs e)
@@ -683,8 +747,7 @@ namespace KeySign
 
         private void textBox_appkey_TextChanged(object sender, EventArgs e)
         {
-            // if (textBox_appkey.Text == "123456" || Regex.IsMatch(textBox_appkey.Text, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$ ", RegexOptions.IgnoreCase))
-            if (textBox_appkey.Text == textBox_id.Text.Substring(textBox_id.Text.Length - 6, 6) || Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(textBox_appkey.Text, @"^[a-zA-Z][a-zA-Z0-9]\w{5,15}$", RegexOptions.IgnoreCase))
             {
                 if (Regex.IsMatch(textBox_appkey.Text, @"[\d]", RegexOptions.IgnoreCase))
                     label_appkey.Visible = false;
@@ -716,6 +779,30 @@ namespace KeySign
             else
             {
                 label_project.Visible = false;
+            }
+        }
+
+        private void textBox_appid_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_appid.Text == null || textBox_appid.Text == "")
+            {
+                label_appid1.Visible = true;
+            }
+            else
+            {
+                label_appid1.Visible = false;
+            }
+        }
+
+        private void rdo_new_Click(object sender, EventArgs e)
+        {
+            if (rdo_new.Checked)
+            {
+                textBox_appid.Enabled = true;
+            }
+            else
+            {
+                textBox_appid.Enabled = false;
             }
         }
     }
