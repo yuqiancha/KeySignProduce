@@ -608,6 +608,7 @@ namespace KeySign
                             if (obj != null)
                             {
                                 textBox_appid.Text = obj.ToString();
+                                label_appid2.Visible = false;
                             }
                             else
                             {
@@ -799,9 +800,11 @@ namespace KeySign
             if (rdo_new.Checked)
             {
                 textBox_appid.Enabled = true;
+                label_care.Visible = false;
             }
             else
             {
+                label_care.Visible = true;
                 textBox_appid.Enabled = false;
             }
         }

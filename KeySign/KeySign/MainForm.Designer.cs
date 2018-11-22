@@ -119,6 +119,7 @@
             this.label_name = new System.Windows.Forms.Label();
             this.label_appid1 = new System.Windows.Forms.Label();
             this.label_appid2 = new System.Windows.Forms.Label();
+            this.label_care = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1058,12 +1059,24 @@
             this.label_appid2.AutoSize = true;
             this.label_appid2.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_appid2.ForeColor = System.Drawing.Color.Red;
-            this.label_appid2.Location = new System.Drawing.Point(778, 106);
+            this.label_appid2.Location = new System.Drawing.Point(725, 106);
             this.label_appid2.Name = "label_appid2";
-            this.label_appid2.Size = new System.Drawing.Size(167, 15);
+            this.label_appid2.Size = new System.Drawing.Size(297, 15);
             this.label_appid2.TabIndex = 1;
-            this.label_appid2.Text = "数据库中已存在此APPID";
+            this.label_appid2.Text = "新APPID与旧APPID不一致，请点击自动生成";
             this.label_appid2.Visible = false;
+            // 
+            // label_care
+            // 
+            this.label_care.AutoSize = true;
+            this.label_care.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_care.ForeColor = System.Drawing.Color.Red;
+            this.label_care.Location = new System.Drawing.Point(180, 507);
+            this.label_care.Name = "label_care";
+            this.label_care.Size = new System.Drawing.Size(551, 15);
+            this.label_care.TabIndex = 12;
+            this.label_care.Text = "注意事项：当证书类型为“补证”时，APP ID只能使用原有ID账号，不能进行更改";
+            this.label_care.Visible = false;
             // 
             // MainForm
             // 
@@ -1071,6 +1084,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1034, 661);
+            this.Controls.Add(this.label_care);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox_instype);
@@ -1258,6 +1272,7 @@
         private System.Windows.Forms.Label label_name;
         private System.Windows.Forms.Label label_appid1;
         private System.Windows.Forms.Label label_appid2;
+        private System.Windows.Forms.Label label_care;
     }
 }
 
