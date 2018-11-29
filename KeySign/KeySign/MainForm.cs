@@ -510,14 +510,7 @@ namespace KeySign
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string valid = ConfigurationManager.AppSettings["used"];
-            if (valid != "paid")
-            {
-                DateTime dt = DateTime.Now;
-                string year = dt.Year.ToString();
-                Trace.WriteLine(year);
-                if (year != "2018") this.Close();
-            }
+
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
@@ -527,8 +520,6 @@ namespace KeySign
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //  label_appid1.Visible = false;
-            //  label_appid2.Visible = false;
             textBox_appid.Text = "";
 
             if (rdo_new.Checked)
