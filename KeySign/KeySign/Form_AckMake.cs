@@ -213,7 +213,7 @@ namespace KeySign
                     return;
                 }
                 string print1 = "姓名:" + CertInfo.name;
-                string print2 = "发证日期:" + CertInfo.issue_day.Substring(2,8);
+                string print2 = "有效期至:" + CertInfo.cert_validity_period_end.Substring(2,8);
                 string print3 = CertInfo.OnlyID;
 
                 ret = Program.setup("30", "17", "6", "10", "0", "1", "0");                           //Setup the media size and sensor type info
