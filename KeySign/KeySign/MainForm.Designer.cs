@@ -120,6 +120,8 @@
             this.label_appid1 = new System.Windows.Forms.Label();
             this.label_appid2 = new System.Windows.Forms.Label();
             this.label_care = new System.Windows.Forms.Label();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -648,7 +650,7 @@
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label37.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label37.Location = new System.Drawing.Point(32, 86);
+            this.label37.Location = new System.Drawing.Point(32, 72);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(144, 16);
             this.label37.TabIndex = 1;
@@ -1078,6 +1080,26 @@
             this.label_care.Text = "注意事项：当证书类型为“补证”时，APP ID只能使用原有ID账号，不能进行更改";
             this.label_care.Visible = false;
             // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(1034, 661);
+            this.shapeContainer1.TabIndex = 13;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.BorderColor = System.Drawing.Color.DarkGreen;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 36;
+            this.lineShape1.X2 = 1024;
+            this.lineShape1.Y1 = 96;
+            this.lineShape1.Y2 = 96;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1164,6 +1186,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1273,6 +1296,8 @@
         private System.Windows.Forms.Label label_appid1;
         private System.Windows.Forms.Label label_appid2;
         private System.Windows.Forms.Label label_care;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
     }
 }
 
